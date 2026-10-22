@@ -83,7 +83,7 @@ a:focus-visible,audio:focus-visible,button:focus-visible{outline:2px solid var(-
 <h1><span class="zh">情緒可控的語音合成：<br>類別、強度，與控制的邊界</span><span class="en">Controllable emotional speech synthesis:<br>category, intensity, and the limits of control</span></h1>
 <p class="lede"><span class="zh">以 CosyVoice 2 為基礎模型，於語言模型輸入端加入情緒類別與連續情緒維度（激發度、支配度、愉悅度）條件，並以條件丟棄與無分類器引導放大條件訊號。</span><span class="en">Built on CosyVoice 2: an emotion-category embedding and continuous emotion dimensions (arousal, dominance, valence) are added at the language-model input, and the conditioning signal is amplified with condition dropout and classifier-free guidance.</span></p>
 <ul class="meta"><li><span class="zh">七類情緒</span><span class="en">Seven emotions</span></li><li><span class="zh">強度以引導係數 w 調整</span><span class="en">Intensity via guidance coefficient w</span></li><li><span class="zh">中文與英文</span><span class="en">Mandarin and English</span></li></ul></header>
-<nav><ol><li><a href="#emotions"><span class="zh">七類情緒</span><span class="en">Seven emotions</span></a></li><li><a href="#intensity"><span class="zh">強度旋鈕</span><span class="en">Intensity knob</span></a></li><li><a href="#support"><span class="zh">控制範圍的但書</span><span class="en">Limits of the control</span></a></li><li><a href="#instruct"><span class="zh">文字指令</span><span class="en">Text instruction</span></a></li><li><a href="#baseline"><span class="zh">原版模型的指令模式</span><span class="en">Off-the-shelf instruct mode</span></a></li><li><a href="#cer"><span class="zh">中文可懂度</span><span class="en">Mandarin intelligibility</span></a></li><li><a href="#steering"><span class="zh">表徵方向注入</span><span class="en">Activation steering</span></a></li></ol></nav>
+<nav><ol><li><a href="#emotions"><span class="zh">七類情緒</span><span class="en">Seven emotions</span></a></li><li><a href="#emoid"><span class="zh">只給情緒類別</span><span class="en">Category only</span></a></li><li><a href="#intensity"><span class="zh">強度旋鈕</span><span class="en">Intensity knob</span></a></li><li><a href="#support"><span class="zh">控制範圍的但書</span><span class="en">Limits of the control</span></a></li><li><a href="#instruct"><span class="zh">文字指令</span><span class="en">Text instruction</span></a></li><li><a href="#baseline"><span class="zh">原版模型的指令模式</span><span class="en">Off-the-shelf instruct mode</span></a></li><li><a href="#cer"><span class="zh">中文可懂度</span><span class="en">Mandarin intelligibility</span></a></li><li><a href="#steering"><span class="zh">表徵方向注入</span><span class="en">Activation steering</span></a></li></ol></nav>
 <section id="emotions">
 <div class="sec-head"><span class="num">1</span><h2><span class="zh">七類情緒</span><span class="en">Seven emotions</span></h2></div>
 <p class="shared-text"><b><span class="zh">文本</span><span class="en">Text</span></b>他把書放回書架的第二層。<span class="en gloss"> He put the book back on the second shelf.</span></p>
@@ -118,8 +118,51 @@ a:focus-visible,audio:focus-visible,button:focus-visible{outline:2px solid var(-
 </div>
 </div>
 </section>
+<section id="emoid">
+<div class="sec-head"><span class="num">2</span><h2><span class="zh">只給情緒類別，不給連續維度</span><span class="en">Emotion category only, no continuous dimensions</span></h2></div>
+<p class="lead"><span class="zh">與上一區同一個模型，但情緒僅由情緒類別下達，不另給連續維度：激發度／支配度／愉悅度三維條件完全不給（填 nan），引導係數仍為 w=1。這不是權宜之計——訓練資料中的中文 ESD 真人語料（17,150 句）本來就是只有情緒類別、沒有連續標註，恐懼與厭惡的擴充語料亦然，因此七個類別在訓練時都見過這個條件。卡片上的激發度是情緒辨識模型聽合成結果回標的量測值，不是輸入設定——因為此處並沒有輸入任何激發度。另註：whisper 在悲傷與憤怒兩段各標出一個字的差異（「天空」→「青空」、「雲」→「圓」），試聽判斷為可接受。</span><span class="en">The same model as the previous section, but the emotion is given by its category ALONE: the continuous arousal / dominance / valence conditioning is withheld (set to nan), with the guidance coefficient still at w=1. This is not a workaround. The Mandarin ESD recordings in the training data (17,150 utterances) carry an emotion category and no continuous labels, and so does the fear/disgust expansion, so all seven categories met this condition during training. The arousal on each card is MEASURED from the output by the speech-emotion-recognition model, not a setting: no arousal was supplied here. Note also that whisper transcribed one character differently in the sad and angry clips; on listening these were judged acceptable.</span></p>
+<p class="shared-text"><b><span class="zh">文本</span><span class="en">Text</span></b>昨天晚上天空中出現了一朵形狀特殊的雲。</p>
+<ul class="stats"><li><span><span class="zh">激發度全距（回標）</span><span class="en">Measured arousal range</span></span> 0.382</li><li><span><span class="zh">最低／最高</span><span class="en">Lowest / highest</span></span> 悲傷 0.350 / 驚訝 0.732</li><li><span><span class="zh">連續維度條件</span><span class="en">Continuous conditioning</span></span> nan</li></ul>
+<div class="grid cols-4">
+<div class="card">
+<span class="cond"><span class="zh">中性</span><span class="en">Neutral</span></span>
+<audio controls preload="none" src="audio/emoid_00.mp3"></audio>
+<p class="note"><span class="zh">情緒辨識模型回標激發度 0.468</span><span class="en">Arousal measured by the SER model: 0.468</span></p>
+</div>
+<div class="card">
+<span class="cond"><span class="zh">快樂</span><span class="en">Happy</span></span>
+<audio controls preload="none" src="audio/emoid_01.mp3"></audio>
+<p class="note"><span class="zh">情緒辨識模型回標激發度 0.654</span><span class="en">Arousal measured by the SER model: 0.654</span></p>
+</div>
+<div class="card">
+<span class="cond"><span class="zh">悲傷</span><span class="en">Sad</span></span>
+<audio controls preload="none" src="audio/emoid_02.mp3"></audio>
+<p class="note"><span class="zh">情緒辨識模型回標激發度 0.350</span><span class="en">Arousal measured by the SER model: 0.350</span></p>
+</div>
+<div class="card">
+<span class="cond"><span class="zh">憤怒</span><span class="en">Angry</span></span>
+<audio controls preload="none" src="audio/emoid_03.mp3"></audio>
+<p class="note"><span class="zh">情緒辨識模型回標激發度 0.537</span><span class="en">Arousal measured by the SER model: 0.537</span></p>
+</div>
+<div class="card">
+<span class="cond"><span class="zh">驚訝</span><span class="en">Surprise</span></span>
+<audio controls preload="none" src="audio/emoid_04.mp3"></audio>
+<p class="note"><span class="zh">情緒辨識模型回標激發度 0.732</span><span class="en">Arousal measured by the SER model: 0.732</span></p>
+</div>
+<div class="card">
+<span class="cond"><span class="zh">恐懼</span><span class="en">Fear</span></span>
+<audio controls preload="none" src="audio/emoid_05.mp3"></audio>
+<p class="note"><span class="zh">情緒辨識模型回標激發度 0.600</span><span class="en">Arousal measured by the SER model: 0.600</span></p>
+</div>
+<div class="card">
+<span class="cond"><span class="zh">厭惡</span><span class="en">Disgust</span></span>
+<audio controls preload="none" src="audio/emoid_06.mp3"></audio>
+<p class="note"><span class="zh">情緒辨識模型回標激發度 0.489</span><span class="en">Arousal measured by the SER model: 0.489</span></p>
+</div>
+</div>
+</section>
 <section id="intensity">
-<div class="sec-head"><span class="num">2</span><h2><span class="zh">強度旋鈕：引導係數 w</span><span class="en">Intensity knob: guidance coefficient w</span></h2></div>
+<div class="sec-head"><span class="num">3</span><h2><span class="zh">強度旋鈕：引導係數 w</span><span class="en">Intensity knob: guidance coefficient w</span></h2></div>
 <p class="lead"><span class="zh">w 為推論時的引導係數，用來放大情緒條件的影響：w=0 即一般的條件式生成，w 越大，模型越往「有情緒條件」與「無情緒條件」之間的差異方向外推。實驗中以 w ≈ 1 表現最佳，再往上雖然聽感更誇張，卻已是分佈外的外插。</span><span class="en">w is the guidance coefficient applied at inference to amplify the emotion condition. w=0 is plain conditional generation; larger w extrapolates further along the direction between the conditioned and unconditioned outputs. In our experiments w ≈ 1 works best: beyond that the effect sounds stronger but is already extrapolation outside the training data.</span></p>
 <p class="shared-text"><b><span class="zh">文本</span><span class="en">Text</span></b>他把書放回書架的第二層。<span class="en gloss"> He put the book back on the second shelf.</span></p>
 <div class="grid cols-3">
@@ -191,7 +234,7 @@ a:focus-visible,audio:focus-visible,button:focus-visible{outline:2px solid var(-
 </div>
 </section>
 <section id="support">
-<div class="sec-head"><span class="num">3</span><h2><span class="zh">控制範圍的但書：資料範圍內與分佈外</span><span class="en">Limits of the control: in-range vs outside the data</span></h2></div>
+<div class="sec-head"><span class="num">4</span><h2><span class="zh">控制範圍的但書：資料範圍內與分佈外</span><span class="en">Limits of the control: in-range vs outside the data</span></h2></div>
 <p class="lead"><span class="zh">同一模型、同一情緒（憤怒）、同一句英文文本，僅改變所指定的激發度。第一格是訓練資料幾乎未出現的極端設定，其餘兩格落在訓練資料實際涵蓋的範圍內。第一格與其餘兩格的差異明顯，但那是模型在分佈外的外插行為；資料範圍內（第二、三格）的差異小得多——這正是客觀數值與聽感之間落差的來源。</span><span class="en">Same model, same emotion (angry), same English sentence; only the requested arousal changes. The first clip uses a setting the training data barely contains; the other two fall inside the range the data actually covers. The first clip clearly differs from the other two, but that is the model extrapolating outside its data: within the covered range (clips two and three) the difference is far smaller, which is where the gap between the objective numbers and what one hears comes from.</span></p>
 <p class="shared-text"><b><span class="zh">文本</span><span class="en">Text</span></b>The weather report says it will rain later this afternoon.</p>
 <ul class="stats"><li><span><span class="zh">完整掃描範圍 ρ</span><span class="en">ρ, full sweep range</span></span> 0.794</li><li><span><span class="zh">僅資料範圍內 ρ</span><span class="en">ρ, in-range only</span></span> 0.613</li><li><span><span class="zh">動態範圍</span><span class="en">Dynamic range</span></span> 0.152 → 0.081</li></ul>
@@ -214,7 +257,7 @@ a:focus-visible,audio:focus-visible,button:focus-visible{outline:2px solid var(-
 </div>
 </section>
 <section id="instruct">
-<div class="sec-head"><span class="num">4</span><h2><span class="zh">兩種下達情緒的方式</span><span class="en">Two ways of requesting the emotion</span></h2></div>
+<div class="sec-head"><span class="num">5</span><h2><span class="zh">兩種下達情緒的方式</span><span class="en">Two ways of requesting the emotion</span></h2></div>
 <p class="lead"><span class="zh">右欄來自第二個模型：同樣以 CosyVoice 2 為基礎，但不給 ADV 向量、也沒有引導係數，情緒只由一句固定的模板指定（generate a {emotion} version of the following sentence），以 19,854 句純中文資料微調。左欄是前兩區那個模型在 w=1 的輸出，兩欄同句、同語者、同隨機種子。以八句語意中性的文本量測：文字指令下，換情緒造成的激發度差異（標準差 0.063）大於換句子造成的差異（0.051）；ADV 條件在 w=1 則相反（0.033 對 0.046），也就是換情緒的效果比換句子還小。文字指令在預設狀態下的情緒分離度，相當於 ADV 條件推到 w=2——而後者已是分佈外的外插。</span><span class="en">The right-hand column comes from a second model, also built on CosyVoice 2, but given no ADV vector and no guidance coefficient: the emotion is carried by a fixed template (generate a {emotion} version of the following sentence) and nothing else, fine-tuned on 19,854 Mandarin-only utterances. The left-hand column is the model from the previous two sections at w=1. Same sentence, same speaker prompt, same random seed. Measured over eight semantically neutral sentences: with the text instruction, changing the emotion moves arousal more (SD 0.063) than changing the sentence does (0.051); with ADV conditioning at w=1 the reverse holds (0.033 vs 0.046) -- the emotion matters less than the sentence. The text instruction reaches, with no knob at all, the separation that ADV conditioning needs w=2 to reach, and w=2 is already extrapolation outside the training data.</span></p>
 <p class="shared-text"><b><span class="zh">文本</span><span class="en">Text</span></b>他把書放回書架的第二層。<span class="en gloss"> He put the book back on the second shelf.</span></p>
 <ul class="stats"><li><span><span class="zh">情緒間激發度標準差</span><span class="en">Between-emotion arousal SD</span></span> 0.033 (w=1) → 0.063</li><li><span><span class="zh">同一情緒換句子</span><span class="en">Same emotion, different sentence</span></span> 0.046 → 0.051</li><li><span><span class="zh">純中文訓練資料</span><span class="en">Mandarin-only training data</span></span> 19,854</li></ul>
@@ -285,7 +328,7 @@ a:focus-visible,audio:focus-visible,button:focus-visible{outline:2px solid var(-
 </div>
 </section>
 <section id="baseline">
-<div class="sec-head"><span class="num">5</span><h2><span class="zh">對照：原版模型的指令模式</span><span class="en">Baseline: instruct mode on the un-fine-tuned model</span></h2></div>
+<div class="sec-head"><span class="num">6</span><h2><span class="zh">對照：原版模型的指令模式</span><span class="en">Baseline: instruct mode on the un-fine-tuned model</span></h2></div>
 <p class="lead"><span class="zh">未經本研究任何微調的原版 CosyVoice 2，只用一句自然語言描述情緒。文本、語者提示、隨機種子與前面各區相同，可直接對比。同一模型的中性錨點預測激發度為 0.549，可作為「這句指令加了多少情緒」的零點。注意原版模型沒有強度旋鈕：加強句只是換措辭，無法連續調整。</span><span class="en">The original CosyVoice 2, with none of this study&#x27;s fine-tuning, given only a natural-language description of the emotion. Sentence, speaker prompt and random seed match the other sections, so the clips are directly comparable. The same model&#x27;s neutral anchor reads 0.549, the zero point for how much emotion the instruction actually added. Note that this model has no intensity knob: the stronger wording is a different phrase, not a continuous setting.</span></p>
 <p class="shared-text"><b><span class="zh">文本</span><span class="en">Text</span></b>他把書放回書架的第二層<span class="en gloss"> He put the book back on the second shelf.</span></p>
 <div class="grid cols-3">
@@ -324,7 +367,7 @@ a:focus-visible,audio:focus-visible,button:focus-visible{outline:2px solid var(-
 </div>
 </section>
 <section id="cer">
-<div class="sec-head"><span class="num">6</span><h2><span class="zh">資料擴充前後的中文可懂度</span><span class="en">Mandarin intelligibility, before and after data expansion</span></h2></div>
+<div class="sec-head"><span class="num">7</span><h2><span class="zh">資料擴充前後的中文可懂度</span><span class="en">Mandarin intelligibility, before and after data expansion</span></h2></div>
 <p class="lead"><span class="zh">擴充前的模型在中文上有明顯的遺忘現象，約四分之一的句子被合成為與文本無關的內容；擴充後幾乎消失。每格附上以 Whisper large-v2 轉寫所得的字元錯誤率與辨識結果。</span><span class="en">Before the expansion the model had clearly forgotten Mandarin: about a quarter of the sentences came out as content unrelated to the input text. Each cell shows the character error rate and the transcript from Whisper large-v2.</span></p>
 <p class="shared-text"><b><span class="zh">文本</span><span class="en">Text</span></b>昨天晚上下了好大的雨還打雷。<span class="en gloss"> It rained heavily last night, with thunder.</span></p>
 <ul class="stats"><li><span><span class="zh">平均字元錯誤率</span><span class="en">Mean CER</span></span> 0.32–0.39 → ≤ 0.03</li><li><span><span class="zh">崩壞句數</span><span class="en">Broken sentences</span></span> 31–39 / 135 → 0–1 / 135</li></ul>
@@ -365,7 +408,7 @@ a:focus-visible,audio:focus-visible,button:focus-visible{outline:2px solid var(-
 </div>
 </section>
 <section id="steering">
-<div class="sec-head"><span class="num">7</span><h2><span class="zh">未微調模型上的表徵方向注入</span><span class="en">Activation steering on the un-fine-tuned model</span></h2></div>
+<div class="sec-head"><span class="num">8</span><h2><span class="zh">未微調模型上的表徵方向注入</span><span class="en">Activation steering on the un-fine-tuned model</span></h2></div>
 <p class="lead"><span class="zh">不更新任何權重，於語言模型第 16 層的連續表徵加上一個激發度方向，強度為 α。此為分析章節所用的聽測刺激。</span><span class="en">No weights are updated: an arousal direction, scaled by α, is added to the continuous representation at layer 16 of the language model. These are the listening-test stimuli used in the analysis chapter.</span></p>
 <div class="grid cols-3">
 <p class="rowlab"><span class="zh">英文</span><span class="en">English</span><span class="t">The library added several new titles to its shelves.</span></p>
