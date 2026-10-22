@@ -63,6 +63,8 @@ h2{font-size:1.3rem;margin:0;font-family:"Noto Serif TC",Georgia,serif;font-weig
 .grid{display:grid;gap:.9rem}
 .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
 .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid.cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.grid.cols-5{grid-template-columns:repeat(5,minmax(0,1fr))}
 .rowlab{grid-column:1/-1;font-size:.84rem;color:var(--faint);font-weight:600;margin:.9rem 0 -.2rem;
   display:flex;flex-wrap:wrap;gap:.6rem;align-items:baseline}
 .rowlab span.t{font-weight:400;color:var(--mut);font-size:.88rem}
@@ -72,7 +74,10 @@ h2{font-size:1.3rem;margin:0;font-family:"Noto Serif TC",Georgia,serif;font-weig
 .card .txt{font-size:.9rem;color:var(--mut);margin:0}
 .card audio{width:100%;height:36px;margin-top:auto}
 .card .note{font-size:.82rem;color:var(--faint);margin:0}
+@media(max-width:1100px){.grid.cols-5{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .grid.cols-4{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:720px){.grid.cols-2,.grid.cols-3{grid-template-columns:1fr}
+  .grid.cols-5,.grid.cols-4{grid-template-columns:repeat(2,minmax(0,1fr))}
   .langs{position:static;margin:0 0 1.5rem;width:max-content}
   header{padding-top:1.5rem}}
 
@@ -120,190 +125,164 @@ a:focus-visible,audio:focus-visible,button:focus-visible{outline:2px solid var(-
 </section>
 <section id="emoid_w">
 <div class="sec-head"><span class="num">2</span><h2><span class="zh">只給情緒類別時的強度旋鈕</span><span class="en">The intensity knob with the category alone</span></h2></div>
-<p class="lead"><span class="zh">與上一區同一個模型、同一句話。情緒僅由類別 id 下達，連續的激發度／支配度／愉悅度完全不給（填 nan），只改變引導係數 w。這不是權宜之計——訓練資料中的中文 ESD 真人語料（17,150 句）本來就只有情緒類別、沒有連續標註，恐懼與厭惡的擴充語料亦然，因此七個類別在訓練時都見過這個條件。每格的激發度是情緒辨識模型對合成結果的回標量測值，不是輸入設定——此處並未輸入任何激發度。兩點要照實說明：七個情緒沒有一個的激發度隨 w 單調遞增，抖動幅度與句內雜訊同一量級；轉寫錯字也沒有隨 w 增加，w=2 反而最乾淨，而三個不同 w 都把句尾的「雲」聽成韻母相近的字，較像該字的辨識邊界問題而非合成崩壞。</span><span class="en">The same model and sentence as the previous section. The emotion is given by its category alone, with the continuous arousal / dominance / valence conditioning withheld (set to nan); only the guidance coefficient w changes. This is not a workaround: the Mandarin ESD recordings in the training data (17,150 utterances) carry a category and no continuous labels, and so does the fear/disgust expansion, so all seven categories met this condition in training. The arousal in each cell is measured from the output by the speech-emotion-recognition model, not a setting: no arousal was supplied. Two findings stated plainly: no emotion&#x27;s arousal rises monotonically with w, the variation being the same size as the sentence-to-sentence noise measured earlier; and transcription errors do not grow with w either -- w=2 is the cleanest, and three different w values heard the final character 雲 as a rhyming one, which looks like that character&#x27;s recognition boundary rather than synthesis breaking down.</span></p>
+<p class="lead"><span class="zh">與上一區同一個模型、同一句話。情緒僅由類別 id 下達，連續的激發度／支配度／愉悅度完全不給（填 nan），只改變引導係數 w。這不是權宜之計——訓練資料中的中文 ESD 真人語料（17,150 句）本來就只有情緒類別、沒有連續標註，恐懼與厭惡的擴充語料亦然，因此七個類別在訓練時都見過這個條件。每格的激發度是情緒辨識模型對合成結果的回標量測值，不是輸入設定——此處並未輸入任何激發度。（中性為參考零點，此區不列。）兩點要照實說明：七類量測下來沒有一個情緒的激發度隨 w 單調遞增，抖動幅度與句內雜訊同一量級；轉寫錯字也沒有隨 w 增加，w=2 反而最乾淨，而三個不同 w 都把句尾的「雲」聽成韻母相近的字，較像該字的辨識邊界問題而非合成崩壞。</span><span class="en">The same model and sentence as the previous section. The emotion is given by its category alone, with the continuous arousal / dominance / valence conditioning withheld (set to nan); only the guidance coefficient w changes. This is not a workaround: the Mandarin ESD recordings in the training data (17,150 utterances) carry a category and no continuous labels, and so does the fear/disgust expansion, so all seven categories met this condition in training. The arousal in each cell is measured from the output by the speech-emotion-recognition model, not a setting: no arousal was supplied. Two findings stated plainly: no emotion&#x27;s arousal rises monotonically with w, the variation being the same size as the sentence-to-sentence noise measured earlier; and transcription errors do not grow with w either -- w=2 is the cleanest, and three different w values heard the final character 雲 as a rhyming one, which looks like that character&#x27;s recognition boundary rather than synthesis breaking down.</span></p>
 <p class="shared-text"><b><span class="zh">文本</span><span class="en">Text</span></b>昨天晚上天空中出現了一朵形狀特殊的雲。</p>
 <ul class="stats"><li><span><span class="zh">情緒間全距（回標）</span><span class="en">Measured range between emotions</span></span> w=0: 0.215 / w=0.5: 0.337 / w=1: 0.382 / w=1.5: 0.226 / w=2: 0.346</li><li><span><span class="zh">連續維度條件</span><span class="en">Continuous conditioning</span></span> nan</li></ul>
 <div class="grid cols-5">
-<p class="rowlab"><span class="zh">中性</span><span class="en">Neutral</span></p>
-<div class="card">
-<span class="cond"><span class="zh">w = 0</span><span class="en">w = 0</span></span>
-<audio controls preload="none" src="audio/emoid_w_00.mp3"></audio>
-<p class="note"><span class="zh">回標激發度 0.475</span><span class="en">Measured arousal 0.475</span></p>
-</div>
-<div class="card">
-<span class="cond"><span class="zh">w = 0.5</span><span class="en">w = 0.5</span></span>
-<audio controls preload="none" src="audio/emoid_w_01.mp3"></audio>
-<p class="note"><span class="zh">回標激發度 0.534</span><span class="en">Measured arousal 0.534</span></p>
-</div>
-<div class="card">
-<span class="cond"><span class="zh">w = 1</span><span class="en">w = 1</span></span>
-<audio controls preload="none" src="audio/emoid_w_02.mp3"></audio>
-<p class="note"><span class="zh">回標激發度 0.468</span><span class="en">Measured arousal 0.468</span></p>
-</div>
-<div class="card">
-<span class="cond"><span class="zh">w = 1.5</span><span class="en">w = 1.5</span></span>
-<audio controls preload="none" src="audio/emoid_w_03.mp3"></audio>
-<p class="note"><span class="zh">回標激發度 0.477</span><span class="en">Measured arousal 0.477</span></p>
-</div>
-<div class="card">
-<span class="cond"><span class="zh">w = 2</span><span class="en">w = 2</span></span>
-<audio controls preload="none" src="audio/emoid_w_04.mp3"></audio>
-<p class="note"><span class="zh">回標激發度 0.444</span><span class="en">Measured arousal 0.444</span></p>
-</div>
 <p class="rowlab"><span class="zh">快樂</span><span class="en">Happy</span></p>
 <div class="card">
 <span class="cond"><span class="zh">w = 0</span><span class="en">w = 0</span></span>
-<audio controls preload="none" src="audio/emoid_w_05.mp3"></audio>
+<audio controls preload="none" src="audio/emoid_w_00.mp3"></audio>
 <p class="note"><span class="zh">回標激發度 0.616</span><span class="en">Measured arousal 0.616</span></p>
 </div>
 <div class="card">
 <span class="cond"><span class="zh">w = 0.5</span><span class="en">w = 0.5</span></span>
-<audio controls preload="none" src="audio/emoid_w_06.mp3"></audio>
+<audio controls preload="none" src="audio/emoid_w_01.mp3"></audio>
 <p class="note"><span class="zh">回標激發度 0.635</span><span class="en">Measured arousal 0.635</span></p>
 </div>
 <div class="card">
 <span class="cond"><span class="zh">w = 1</span><span class="en">w = 1</span></span>
-<audio controls preload="none" src="audio/emoid_w_07.mp3"></audio>
+<audio controls preload="none" src="audio/emoid_w_02.mp3"></audio>
 <p class="note"><span class="zh">回標激發度 0.654</span><span class="en">Measured arousal 0.654</span></p>
 </div>
 <div class="card">
 <span class="cond"><span class="zh">w = 1.5</span><span class="en">w = 1.5</span></span>
-<audio controls preload="none" src="audio/emoid_w_08.mp3"></audio>
+<audio controls preload="none" src="audio/emoid_w_03.mp3"></audio>
 <p class="note"><span class="zh">回標激發度 0.590</span><span class="en">Measured arousal 0.590</span></p>
 </div>
 <div class="card">
 <span class="cond"><span class="zh">w = 2</span><span class="en">w = 2</span></span>
-<audio controls preload="none" src="audio/emoid_w_09.mp3"></audio>
+<audio controls preload="none" src="audio/emoid_w_04.mp3"></audio>
 <p class="note"><span class="zh">回標激發度 0.578</span><span class="en">Measured arousal 0.578</span></p>
 </div>
 <p class="rowlab"><span class="zh">悲傷</span><span class="en">Sad</span></p>
 <div class="card">
 <span class="cond"><span class="zh">w = 0</span><span class="en">w = 0</span></span>
-<audio controls preload="none" src="audio/emoid_w_10.mp3"></audio>
+<audio controls preload="none" src="audio/emoid_w_05.mp3"></audio>
 <p class="note"><span class="zh">回標激發度 0.402</span><span class="en">Measured arousal 0.402</span></p>
 </div>
 <div class="card">
 <span class="cond"><span class="zh">w = 0.5</span><span class="en">w = 0.5</span></span>
-<audio controls preload="none" src="audio/emoid_w_11.mp3"></audio>
+<audio controls preload="none" src="audio/emoid_w_06.mp3"></audio>
 <p class="note"><span class="zh">回標激發度 0.298</span><span class="en">Measured arousal 0.298</span></p>
 </div>
 <div class="card">
 <span class="cond"><span class="zh">w = 1</span><span class="en">w = 1</span></span>
-<audio controls preload="none" src="audio/emoid_w_12.mp3"></audio>
+<audio controls preload="none" src="audio/emoid_w_07.mp3"></audio>
 <p class="note"><span class="zh">回標激發度 0.350</span><span class="en">Measured arousal 0.350</span></p>
 </div>
 <div class="card">
 <span class="cond"><span class="zh">w = 1.5</span><span class="en">w = 1.5</span></span>
-<audio controls preload="none" src="audio/emoid_w_13.mp3"></audio>
+<audio controls preload="none" src="audio/emoid_w_08.mp3"></audio>
 <p class="note"><span class="zh">回標激發度 0.447</span><span class="en">Measured arousal 0.447</span></p>
 </div>
 <div class="card">
 <span class="cond"><span class="zh">w = 2</span><span class="en">w = 2</span></span>
-<audio controls preload="none" src="audio/emoid_w_14.mp3"></audio>
+<audio controls preload="none" src="audio/emoid_w_09.mp3"></audio>
 <p class="note"><span class="zh">回標激發度 0.377</span><span class="en">Measured arousal 0.377</span></p>
 </div>
 <p class="rowlab"><span class="zh">憤怒</span><span class="en">Angry</span></p>
 <div class="card">
 <span class="cond"><span class="zh">w = 0</span><span class="en">w = 0</span></span>
-<audio controls preload="none" src="audio/emoid_w_15.mp3"></audio>
+<audio controls preload="none" src="audio/emoid_w_10.mp3"></audio>
 <p class="note"><span class="zh">回標激發度 0.553</span><span class="en">Measured arousal 0.553</span></p>
 </div>
 <div class="card">
 <span class="cond"><span class="zh">w = 0.5</span><span class="en">w = 0.5</span></span>
-<audio controls preload="none" src="audio/emoid_w_16.mp3"></audio>
+<audio controls preload="none" src="audio/emoid_w_11.mp3"></audio>
 <p class="note"><span class="zh">回標激發度 0.635</span><span class="en">Measured arousal 0.635</span></p>
 </div>
 <div class="card">
 <span class="cond"><span class="zh">w = 1</span><span class="en">w = 1</span></span>
-<audio controls preload="none" src="audio/emoid_w_17.mp3"></audio>
+<audio controls preload="none" src="audio/emoid_w_12.mp3"></audio>
 <p class="note"><span class="zh">回標激發度 0.537</span><span class="en">Measured arousal 0.537</span></p>
 </div>
 <div class="card">
 <span class="cond"><span class="zh">w = 1.5</span><span class="en">w = 1.5</span></span>
-<audio controls preload="none" src="audio/emoid_w_18.mp3"></audio>
+<audio controls preload="none" src="audio/emoid_w_13.mp3"></audio>
 <p class="note"><span class="zh">回標激發度 0.597</span><span class="en">Measured arousal 0.597</span></p>
 </div>
 <div class="card">
 <span class="cond"><span class="zh">w = 2</span><span class="en">w = 2</span></span>
-<audio controls preload="none" src="audio/emoid_w_19.mp3"></audio>
+<audio controls preload="none" src="audio/emoid_w_14.mp3"></audio>
 <p class="note"><span class="zh">回標激發度 0.618</span><span class="en">Measured arousal 0.618</span></p>
 </div>
 <p class="rowlab"><span class="zh">驚訝</span><span class="en">Surprise</span></p>
 <div class="card">
 <span class="cond"><span class="zh">w = 0</span><span class="en">w = 0</span></span>
-<audio controls preload="none" src="audio/emoid_w_20.mp3"></audio>
+<audio controls preload="none" src="audio/emoid_w_15.mp3"></audio>
 <p class="note"><span class="zh">回標激發度 0.531</span><span class="en">Measured arousal 0.531</span></p>
 </div>
 <div class="card">
 <span class="cond"><span class="zh">w = 0.5</span><span class="en">w = 0.5</span></span>
-<audio controls preload="none" src="audio/emoid_w_21.mp3"></audio>
+<audio controls preload="none" src="audio/emoid_w_16.mp3"></audio>
 <p class="note"><span class="zh">回標激發度 0.617</span><span class="en">Measured arousal 0.617</span></p>
 </div>
 <div class="card">
 <span class="cond"><span class="zh">w = 1</span><span class="en">w = 1</span></span>
-<audio controls preload="none" src="audio/emoid_w_22.mp3"></audio>
+<audio controls preload="none" src="audio/emoid_w_17.mp3"></audio>
 <p class="note"><span class="zh">回標激發度 0.732</span><span class="en">Measured arousal 0.732</span></p>
 </div>
 <div class="card">
 <span class="cond"><span class="zh">w = 1.5</span><span class="en">w = 1.5</span></span>
-<audio controls preload="none" src="audio/emoid_w_23.mp3"></audio>
+<audio controls preload="none" src="audio/emoid_w_18.mp3"></audio>
 <p class="note"><span class="zh">回標激發度 0.669</span><span class="en">Measured arousal 0.669</span></p>
 </div>
 <div class="card">
 <span class="cond"><span class="zh">w = 2</span><span class="en">w = 2</span></span>
-<audio controls preload="none" src="audio/emoid_w_24.mp3"></audio>
+<audio controls preload="none" src="audio/emoid_w_19.mp3"></audio>
 <p class="note"><span class="zh">回標激發度 0.723</span><span class="en">Measured arousal 0.723</span></p>
 </div>
 <p class="rowlab"><span class="zh">恐懼</span><span class="en">Fear</span></p>
 <div class="card">
 <span class="cond"><span class="zh">w = 0</span><span class="en">w = 0</span></span>
-<audio controls preload="none" src="audio/emoid_w_25.mp3"></audio>
+<audio controls preload="none" src="audio/emoid_w_20.mp3"></audio>
 <p class="note"><span class="zh">回標激發度 0.567</span><span class="en">Measured arousal 0.567</span></p>
 </div>
 <div class="card">
 <span class="cond"><span class="zh">w = 0.5</span><span class="en">w = 0.5</span></span>
-<audio controls preload="none" src="audio/emoid_w_26.mp3"></audio>
+<audio controls preload="none" src="audio/emoid_w_21.mp3"></audio>
 <p class="note"><span class="zh">回標激發度 0.627</span><span class="en">Measured arousal 0.627</span></p>
 </div>
 <div class="card">
 <span class="cond"><span class="zh">w = 1</span><span class="en">w = 1</span></span>
-<audio controls preload="none" src="audio/emoid_w_27.mp3"></audio>
+<audio controls preload="none" src="audio/emoid_w_22.mp3"></audio>
 <p class="note"><span class="zh">回標激發度 0.600</span><span class="en">Measured arousal 0.600</span></p>
 </div>
 <div class="card">
 <span class="cond"><span class="zh">w = 1.5</span><span class="en">w = 1.5</span></span>
-<audio controls preload="none" src="audio/emoid_w_28.mp3"></audio>
+<audio controls preload="none" src="audio/emoid_w_23.mp3"></audio>
 <p class="note"><span class="zh">回標激發度 0.592</span><span class="en">Measured arousal 0.592</span></p>
 </div>
 <div class="card">
 <span class="cond"><span class="zh">w = 2</span><span class="en">w = 2</span></span>
-<audio controls preload="none" src="audio/emoid_w_29.mp3"></audio>
+<audio controls preload="none" src="audio/emoid_w_24.mp3"></audio>
 <p class="note"><span class="zh">回標激發度 0.623</span><span class="en">Measured arousal 0.623</span></p>
 </div>
 <p class="rowlab"><span class="zh">厭惡</span><span class="en">Disgust</span></p>
 <div class="card">
 <span class="cond"><span class="zh">w = 0</span><span class="en">w = 0</span></span>
-<audio controls preload="none" src="audio/emoid_w_30.mp3"></audio>
+<audio controls preload="none" src="audio/emoid_w_25.mp3"></audio>
 <p class="note"><span class="zh">回標激發度 0.476</span><span class="en">Measured arousal 0.476</span></p>
 </div>
 <div class="card">
 <span class="cond"><span class="zh">w = 0.5</span><span class="en">w = 0.5</span></span>
-<audio controls preload="none" src="audio/emoid_w_31.mp3"></audio>
+<audio controls preload="none" src="audio/emoid_w_26.mp3"></audio>
 <p class="note"><span class="zh">回標激發度 0.540</span><span class="en">Measured arousal 0.540</span></p>
 </div>
 <div class="card">
 <span class="cond"><span class="zh">w = 1</span><span class="en">w = 1</span></span>
-<audio controls preload="none" src="audio/emoid_w_32.mp3"></audio>
+<audio controls preload="none" src="audio/emoid_w_27.mp3"></audio>
 <p class="note"><span class="zh">回標激發度 0.489</span><span class="en">Measured arousal 0.489</span></p>
 </div>
 <div class="card">
 <span class="cond"><span class="zh">w = 1.5</span><span class="en">w = 1.5</span></span>
-<audio controls preload="none" src="audio/emoid_w_33.mp3"></audio>
+<audio controls preload="none" src="audio/emoid_w_28.mp3"></audio>
 <p class="note"><span class="zh">回標激發度 0.443</span><span class="en">Measured arousal 0.443</span></p>
 </div>
 <div class="card">
 <span class="cond"><span class="zh">w = 2</span><span class="en">w = 2</span></span>
-<audio controls preload="none" src="audio/emoid_w_34.mp3"></audio>
+<audio controls preload="none" src="audio/emoid_w_29.mp3"></audio>
 <p class="note"><span class="zh">回標激發度 0.444</span><span class="en">Measured arousal 0.444</span></p>
 </div>
 </div>

@@ -6,41 +6,36 @@ emotions,audio/emotions_03.mp3,eval_s3_emoid/angry/wavs/text0_angry_anan.wav,昨
 emotions,audio/emotions_04.mp3,eval_s3_emoid/surprise/wavs/text0_surprise_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,
 emotions,audio/emotions_05.mp3,eval_s3_emoid/fear/wavs/text0_fear_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,
 emotions,audio/emotions_06.mp3,eval_s3_emoid/disgust/wavs/text0_disgust_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,
-emoid_w,audio/emoid_w_00.mp3,eval_s3_intensity/cfg0_neutral/wavs/text0_neutral_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.475
-emoid_w,audio/emoid_w_01.mp3,eval_s3_intensity/cfg0.5_neutral/wavs/text0_neutral_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.534
-emoid_w,audio/emoid_w_02.mp3,eval_s3_intensity/cfg1_neutral/wavs/text0_neutral_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.468
-emoid_w,audio/emoid_w_03.mp3,eval_s3_intensity/cfg1.5_neutral/wavs/text0_neutral_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.477
-emoid_w,audio/emoid_w_04.mp3,eval_s3_intensity/cfg2_neutral/wavs/text0_neutral_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.444
-emoid_w,audio/emoid_w_05.mp3,eval_s3_intensity/cfg0_happy/wavs/text0_happy_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.616
-emoid_w,audio/emoid_w_06.mp3,eval_s3_intensity/cfg0.5_happy/wavs/text0_happy_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.635
-emoid_w,audio/emoid_w_07.mp3,eval_s3_intensity/cfg1_happy/wavs/text0_happy_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.654
-emoid_w,audio/emoid_w_08.mp3,eval_s3_intensity/cfg1.5_happy/wavs/text0_happy_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.590
-emoid_w,audio/emoid_w_09.mp3,eval_s3_intensity/cfg2_happy/wavs/text0_happy_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.578
-emoid_w,audio/emoid_w_10.mp3,eval_s3_intensity/cfg0_sad/wavs/text0_sad_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.402
-emoid_w,audio/emoid_w_11.mp3,eval_s3_intensity/cfg0.5_sad/wavs/text0_sad_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.298
-emoid_w,audio/emoid_w_12.mp3,eval_s3_intensity/cfg1_sad/wavs/text0_sad_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.350
-emoid_w,audio/emoid_w_13.mp3,eval_s3_intensity/cfg1.5_sad/wavs/text0_sad_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.447
-emoid_w,audio/emoid_w_14.mp3,eval_s3_intensity/cfg2_sad/wavs/text0_sad_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.377
-emoid_w,audio/emoid_w_15.mp3,eval_s3_intensity/cfg0_angry/wavs/text0_angry_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.553
-emoid_w,audio/emoid_w_16.mp3,eval_s3_intensity/cfg0.5_angry/wavs/text0_angry_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.635
-emoid_w,audio/emoid_w_17.mp3,eval_s3_intensity/cfg1_angry/wavs/text0_angry_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.537
-emoid_w,audio/emoid_w_18.mp3,eval_s3_intensity/cfg1.5_angry/wavs/text0_angry_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.597
-emoid_w,audio/emoid_w_19.mp3,eval_s3_intensity/cfg2_angry/wavs/text0_angry_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.618
-emoid_w,audio/emoid_w_20.mp3,eval_s3_intensity/cfg0_surprise/wavs/text0_surprise_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.531
-emoid_w,audio/emoid_w_21.mp3,eval_s3_intensity/cfg0.5_surprise/wavs/text0_surprise_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.617
-emoid_w,audio/emoid_w_22.mp3,eval_s3_intensity/cfg1_surprise/wavs/text0_surprise_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.732
-emoid_w,audio/emoid_w_23.mp3,eval_s3_intensity/cfg1.5_surprise/wavs/text0_surprise_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.669
-emoid_w,audio/emoid_w_24.mp3,eval_s3_intensity/cfg2_surprise/wavs/text0_surprise_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.723
-emoid_w,audio/emoid_w_25.mp3,eval_s3_intensity/cfg0_fear/wavs/text0_fear_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.567
-emoid_w,audio/emoid_w_26.mp3,eval_s3_intensity/cfg0.5_fear/wavs/text0_fear_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.627
-emoid_w,audio/emoid_w_27.mp3,eval_s3_intensity/cfg1_fear/wavs/text0_fear_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.600
-emoid_w,audio/emoid_w_28.mp3,eval_s3_intensity/cfg1.5_fear/wavs/text0_fear_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.592
-emoid_w,audio/emoid_w_29.mp3,eval_s3_intensity/cfg2_fear/wavs/text0_fear_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.623
-emoid_w,audio/emoid_w_30.mp3,eval_s3_intensity/cfg0_disgust/wavs/text0_disgust_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.476
-emoid_w,audio/emoid_w_31.mp3,eval_s3_intensity/cfg0.5_disgust/wavs/text0_disgust_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.540
-emoid_w,audio/emoid_w_32.mp3,eval_s3_intensity/cfg1_disgust/wavs/text0_disgust_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.489
-emoid_w,audio/emoid_w_33.mp3,eval_s3_intensity/cfg1.5_disgust/wavs/text0_disgust_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.443
-emoid_w,audio/emoid_w_34.mp3,eval_s3_intensity/cfg2_disgust/wavs/text0_disgust_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.444
+emoid_w,audio/emoid_w_00.mp3,eval_s3_intensity/cfg0_happy/wavs/text0_happy_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.616
+emoid_w,audio/emoid_w_01.mp3,eval_s3_intensity/cfg0.5_happy/wavs/text0_happy_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.635
+emoid_w,audio/emoid_w_02.mp3,eval_s3_intensity/cfg1_happy/wavs/text0_happy_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.654
+emoid_w,audio/emoid_w_03.mp3,eval_s3_intensity/cfg1.5_happy/wavs/text0_happy_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.590
+emoid_w,audio/emoid_w_04.mp3,eval_s3_intensity/cfg2_happy/wavs/text0_happy_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.578
+emoid_w,audio/emoid_w_05.mp3,eval_s3_intensity/cfg0_sad/wavs/text0_sad_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.402
+emoid_w,audio/emoid_w_06.mp3,eval_s3_intensity/cfg0.5_sad/wavs/text0_sad_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.298
+emoid_w,audio/emoid_w_07.mp3,eval_s3_intensity/cfg1_sad/wavs/text0_sad_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.350
+emoid_w,audio/emoid_w_08.mp3,eval_s3_intensity/cfg1.5_sad/wavs/text0_sad_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.447
+emoid_w,audio/emoid_w_09.mp3,eval_s3_intensity/cfg2_sad/wavs/text0_sad_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.377
+emoid_w,audio/emoid_w_10.mp3,eval_s3_intensity/cfg0_angry/wavs/text0_angry_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.553
+emoid_w,audio/emoid_w_11.mp3,eval_s3_intensity/cfg0.5_angry/wavs/text0_angry_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.635
+emoid_w,audio/emoid_w_12.mp3,eval_s3_intensity/cfg1_angry/wavs/text0_angry_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.537
+emoid_w,audio/emoid_w_13.mp3,eval_s3_intensity/cfg1.5_angry/wavs/text0_angry_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.597
+emoid_w,audio/emoid_w_14.mp3,eval_s3_intensity/cfg2_angry/wavs/text0_angry_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.618
+emoid_w,audio/emoid_w_15.mp3,eval_s3_intensity/cfg0_surprise/wavs/text0_surprise_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.531
+emoid_w,audio/emoid_w_16.mp3,eval_s3_intensity/cfg0.5_surprise/wavs/text0_surprise_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.617
+emoid_w,audio/emoid_w_17.mp3,eval_s3_intensity/cfg1_surprise/wavs/text0_surprise_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.732
+emoid_w,audio/emoid_w_18.mp3,eval_s3_intensity/cfg1.5_surprise/wavs/text0_surprise_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.669
+emoid_w,audio/emoid_w_19.mp3,eval_s3_intensity/cfg2_surprise/wavs/text0_surprise_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.723
+emoid_w,audio/emoid_w_20.mp3,eval_s3_intensity/cfg0_fear/wavs/text0_fear_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.567
+emoid_w,audio/emoid_w_21.mp3,eval_s3_intensity/cfg0.5_fear/wavs/text0_fear_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.627
+emoid_w,audio/emoid_w_22.mp3,eval_s3_intensity/cfg1_fear/wavs/text0_fear_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.600
+emoid_w,audio/emoid_w_23.mp3,eval_s3_intensity/cfg1.5_fear/wavs/text0_fear_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.592
+emoid_w,audio/emoid_w_24.mp3,eval_s3_intensity/cfg2_fear/wavs/text0_fear_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.623
+emoid_w,audio/emoid_w_25.mp3,eval_s3_intensity/cfg0_disgust/wavs/text0_disgust_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.476
+emoid_w,audio/emoid_w_26.mp3,eval_s3_intensity/cfg0.5_disgust/wavs/text0_disgust_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.540
+emoid_w,audio/emoid_w_27.mp3,eval_s3_intensity/cfg1_disgust/wavs/text0_disgust_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.489
+emoid_w,audio/emoid_w_28.mp3,eval_s3_intensity/cfg1.5_disgust/wavs/text0_disgust_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.443
+emoid_w,audio/emoid_w_29.mp3,eval_s3_intensity/cfg2_disgust/wavs/text0_disgust_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,回標激發度 0.444
 intensity,audio/intensity_00.mp3,eval_iter4_cfg/cfg0_angry/wavs/text0_angry_a0.695.wav,他把书放回书架的第二层。,
 intensity,audio/intensity_01.mp3,eval_iter4_cfg/cfg1_angry/wavs/text0_angry_a0.695.wav,他把书放回书架的第二层。,
 intensity,audio/intensity_02.mp3,eval_iter4_cfg/cfg2_angry/wavs/text0_angry_a0.695.wav,他把书放回书架的第二层。,
