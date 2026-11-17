@@ -1,4 +1,11 @@
 block,file,source_wav,text,note
+emotions_instruct,audio/emotions_instruct_00.mp3,eval_s3_instruct/e19/wavs/text0_neutral.wav,昨天晚上天空中出现了一朵形状特殊的云,
+emotions_instruct,audio/emotions_instruct_01.mp3,eval_s3_instruct/e19/wavs/text0_happy.wav,昨天晚上天空中出现了一朵形状特殊的云,
+emotions_instruct,audio/emotions_instruct_02.mp3,eval_s3_instruct/e19/wavs/text0_sad.wav,昨天晚上天空中出现了一朵形状特殊的云,
+emotions_instruct,audio/emotions_instruct_03.mp3,eval_s3_instruct/e19/wavs/text0_angry.wav,昨天晚上天空中出现了一朵形状特殊的云,
+emotions_instruct,audio/emotions_instruct_04.mp3,eval_s3_instruct/e19/wavs/text0_surprise.wav,昨天晚上天空中出现了一朵形状特殊的云,
+emotions_instruct,audio/emotions_instruct_05.mp3,eval_s3_instruct/e19/wavs/text0_fear.wav,昨天晚上天空中出现了一朵形状特殊的云,
+emotions_instruct,audio/emotions_instruct_06.mp3,eval_s3_instruct/e19/wavs/text0_disgust.wav,昨天晚上天空中出现了一朵形状特殊的云,
 emotions,audio/emotions_00.mp3,eval_s3_emoid/neutral/wavs/text0_neutral_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,
 emotions,audio/emotions_01.mp3,eval_s3_emoid/happy/wavs/text0_happy_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,
 emotions,audio/emotions_02.mp3,eval_s3_emoid/sad/wavs/text0_sad_anan.wav,昨天晚上天空中出现了一朵形状特殊的云。,
