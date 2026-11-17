@@ -53,6 +53,11 @@ h2{font-size:1.3rem;margin:0;font-family:"Noto Serif TC",Georgia,serif;font-weig
 .listen{display:flex;gap:.6rem;background:var(--panel);border:1px solid var(--line);
   border-left:3px solid var(--accent);border-radius:8px;padding:.7rem .9rem;margin:0 0 1.2rem;font-size:.94rem}
 .listen b{color:var(--accent);flex:0 0 auto;font-weight:600}
+.inputs{background:var(--chip);border-radius:8px;padding:.6rem .9rem;margin:0 0 1.1rem;font-size:.92rem}
+.inputs>b{display:block;color:var(--faint);font-weight:600;font-size:.8rem;letter-spacing:.06em;margin:0 0 .35rem}
+.inputs dl{display:grid;grid-template-columns:max-content 1fr;gap:.2rem .8rem;margin:0}
+.inputs dt{color:var(--mut);font-weight:600}
+.inputs dd{margin:0}
 .shared-text{background:var(--chip);border-radius:8px;padding:.55rem .85rem;margin:0 0 1rem;font-size:.95rem}
 .gloss{color:var(--faint);font-style:italic}
 .shared-text b{color:var(--faint);font-weight:600;font-size:.8rem;letter-spacing:.06em;margin-right:.6rem}
@@ -123,9 +128,9 @@ a:focus-visible,audio:focus-visible,button:focus-visible{outline:2px solid var(-
 </section>
 <section id="emoid_w">
 <div class="sec-head"><span class="num">2</span><h2><span class="zh">只給情緒類別時的強度旋鈕</span><span class="en">The intensity knob with the category alone</span></h2></div>
-<p class="shared-text"><b><span class="zh">文本</span><span class="en">Text</span></b>昨天晚上天空中出現了一朵形狀特殊的雲。</p>
+<div class="inputs"><b><span class="zh">輸入</span><span class="en">Input</span></b><dl><dt><span class="zh">文本</span><span class="en">Text</span></dt><dd>昨天晚上天空中出現了一朵形狀特殊的雲。</dd><dt><span class="zh">emo id</span><span class="en">emo id</span></dt><dd>happy / sad / angry / surprise / fear / disgust</dd><dt><span class="zh">adv</span><span class="en">adv</span></dt><dd>null</dd></dl></div>
 <div class="grid cols-5">
-<p class="rowlab"><span class="zh">快樂　emo id：happy　adv：nan</span><span class="en">Happy　emo id: happy　adv: nan</span></p>
+<p class="rowlab"><span class="zh">快樂</span><span class="en">Happy</span></p>
 <div class="card">
 <span class="cond"><span class="zh">w = 0</span><span class="en">w = 0</span></span>
 <audio controls preload="none" src="audio/emoid_w_00.mp3"></audio>
@@ -146,7 +151,7 @@ a:focus-visible,audio:focus-visible,button:focus-visible{outline:2px solid var(-
 <span class="cond"><span class="zh">w = 2</span><span class="en">w = 2</span></span>
 <audio controls preload="none" src="audio/emoid_w_04.mp3"></audio>
 </div>
-<p class="rowlab"><span class="zh">悲傷　emo id：sad　adv：nan</span><span class="en">Sad　emo id: sad　adv: nan</span></p>
+<p class="rowlab"><span class="zh">悲傷</span><span class="en">Sad</span></p>
 <div class="card">
 <span class="cond"><span class="zh">w = 0</span><span class="en">w = 0</span></span>
 <audio controls preload="none" src="audio/emoid_w_05.mp3"></audio>
@@ -167,7 +172,7 @@ a:focus-visible,audio:focus-visible,button:focus-visible{outline:2px solid var(-
 <span class="cond"><span class="zh">w = 2</span><span class="en">w = 2</span></span>
 <audio controls preload="none" src="audio/emoid_w_09.mp3"></audio>
 </div>
-<p class="rowlab"><span class="zh">憤怒　emo id：angry　adv：nan</span><span class="en">Angry　emo id: angry　adv: nan</span></p>
+<p class="rowlab"><span class="zh">憤怒</span><span class="en">Angry</span></p>
 <div class="card">
 <span class="cond"><span class="zh">w = 0</span><span class="en">w = 0</span></span>
 <audio controls preload="none" src="audio/emoid_w_10.mp3"></audio>
@@ -188,7 +193,7 @@ a:focus-visible,audio:focus-visible,button:focus-visible{outline:2px solid var(-
 <span class="cond"><span class="zh">w = 2</span><span class="en">w = 2</span></span>
 <audio controls preload="none" src="audio/emoid_w_14.mp3"></audio>
 </div>
-<p class="rowlab"><span class="zh">驚訝　emo id：surprise　adv：nan</span><span class="en">Surprise　emo id: surprise　adv: nan</span></p>
+<p class="rowlab"><span class="zh">驚訝</span><span class="en">Surprise</span></p>
 <div class="card">
 <span class="cond"><span class="zh">w = 0</span><span class="en">w = 0</span></span>
 <audio controls preload="none" src="audio/emoid_w_15.mp3"></audio>
@@ -209,7 +214,7 @@ a:focus-visible,audio:focus-visible,button:focus-visible{outline:2px solid var(-
 <span class="cond"><span class="zh">w = 2</span><span class="en">w = 2</span></span>
 <audio controls preload="none" src="audio/emoid_w_19.mp3"></audio>
 </div>
-<p class="rowlab"><span class="zh">恐懼　emo id：fear　adv：nan</span><span class="en">Fear　emo id: fear　adv: nan</span></p>
+<p class="rowlab"><span class="zh">恐懼</span><span class="en">Fear</span></p>
 <div class="card">
 <span class="cond"><span class="zh">w = 0</span><span class="en">w = 0</span></span>
 <audio controls preload="none" src="audio/emoid_w_20.mp3"></audio>
@@ -230,7 +235,7 @@ a:focus-visible,audio:focus-visible,button:focus-visible{outline:2px solid var(-
 <span class="cond"><span class="zh">w = 2</span><span class="en">w = 2</span></span>
 <audio controls preload="none" src="audio/emoid_w_24.mp3"></audio>
 </div>
-<p class="rowlab"><span class="zh">厭惡　emo id：disgust　adv：nan</span><span class="en">Disgust　emo id: disgust　adv: nan</span></p>
+<p class="rowlab"><span class="zh">厭惡</span><span class="en">Disgust</span></p>
 <div class="card">
 <span class="cond"><span class="zh">w = 0</span><span class="en">w = 0</span></span>
 <audio controls preload="none" src="audio/emoid_w_25.mp3"></audio>
