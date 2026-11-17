@@ -73,12 +73,3 @@ intensity,audio/intensity_26.mp3,eval_s3_adv_intensity/cfg0.5_disgust/wavs/text0
 intensity,audio/intensity_27.mp3,eval_s3_adv_intensity/cfg1_disgust/wavs/text0_disgust_a0.587.wav,昨天晚上天空中出现了一朵形状特殊的云。,
 intensity,audio/intensity_28.mp3,eval_s3_adv_intensity/cfg1.5_disgust/wavs/text0_disgust_a0.587.wav,昨天晚上天空中出现了一朵形状特殊的云。,
 intensity,audio/intensity_29.mp3,eval_s3_adv_intensity/cfg2_disgust/wavs/text0_disgust_a0.587.wav,昨天晚上天空中出现了一朵形状特殊的云。,
-support,audio/support_00.mp3,eval_step0_adv_sweep/iter4_e37_cfg1/wavs/text0_angry_a0.1.wav,The weather report says it will rain later this afternoon.,情緒辨識模型預測激發度 0.444
-support,audio/support_01.mp3,eval_step0_adv_sweep/iter4_e37_cfg1/wavs/text0_angry_a0.5.wav,The weather report says it will rain later this afternoon.,情緒辨識模型預測激發度 0.453
-support,audio/support_02.mp3,eval_step0_adv_sweep/iter4_e37_cfg1/wavs/text0_angry_a0.8.wav,The weather report says it will rain later this afternoon.,情緒辨識模型預測激發度 0.598
-cer,audio/cer_00.mp3,eval_zh_sweep/zh_iter2_e29_cfg1/wavs/text1_angry_a0.4.wav,昨天晚上下了好大的雨还打雷。,字元錯誤率 1.08；辨識為「哎呀有何的事別哀我有褲子要揮」
-cer,audio/cer_01.mp3,eval_zh_sweep/zh_iter4_e37_cfg1/wavs/text1_angry_a0.4.wav,昨天晚上下了好大的雨还打雷。,字元錯誤率 0.00；辨識為「昨天晚上下了好大的雨還打雷」
-cer,audio/cer_02.mp3,eval_zh_sweep/zh_iter2_e29_cfg1/wavs/text1_happy_a0.8.wav,昨天晚上下了好大的雨还打雷。,字元錯誤率 1.54；辨識為「我的媽媽也是看到頭七的缺素頭七的頭七頭七的」
-cer,audio/cer_03.mp3,eval_zh_sweep/zh_iter4_e37_cfg1/wavs/text1_happy_a0.8.wav,昨天晚上下了好大的雨还打雷。,字元錯誤率 0.00；辨識為「昨天晚上下了好大的雨還打雷」
-cer,audio/cer_04.mp3,eval_zh_sweep/zh_iter2_e29_cfg1/wavs/text1_neutral_a0.1.wav,昨天晚上下了好大的雨还打雷。,字元錯誤率 1.31；辨識為「我一直在處理一直在撤家裡後的yes」
-cer,audio/cer_05.mp3,eval_zh_sweep/zh_iter4_e37_cfg1/wavs/text1_neutral_a0.1.wav,昨天晚上下了好大的雨还打雷。,字元錯誤率 0.00；辨識為「昨天晚上下了好大的雨還打雷」

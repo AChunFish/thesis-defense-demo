@@ -91,7 +91,7 @@ a:focus-visible,audio:focus-visible,button:focus-visible{outline:2px solid var(-
 <header>
 <div class="langs"><button type="button" data-lang="zh" aria-pressed="true">中文</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
 <h1><span class="zh">DEMO</span><span class="en">DEMO</span></h1></header>
-<nav><ol><li><a href="#emotions_instruct"><span class="zh">七類情緒（指令）</span><span class="en">Seven emotions (instruct)</span></a></li><li><a href="#emotions"><span class="zh">七類情緒（emo id）</span><span class="en">Seven emotions (emo id)</span></a></li><li><a href="#emoid_w"><span class="zh">只給類別 × 強度</span><span class="en">Category only × intensity</span></a></li><li><a href="#intensity"><span class="zh">支撐區內 × 強度</span><span class="en">In-support × intensity</span></a></li><li><a href="#support"><span class="zh">控制範圍的但書</span><span class="en">Limits of the control</span></a></li><li><a href="#cer"><span class="zh">中文可懂度</span><span class="en">Mandarin intelligibility</span></a></li></ol></nav>
+<nav><ol><li><a href="#emotions_instruct"><span class="zh">七類情緒（指令）</span><span class="en">Seven emotions (instruct)</span></a></li><li><a href="#emotions"><span class="zh">七類情緒（emo id）</span><span class="en">Seven emotions (emo id)</span></a></li><li><a href="#emoid_w"><span class="zh">只給類別 × 強度</span><span class="en">Category only × intensity</span></a></li><li><a href="#intensity"><span class="zh">支撐區內 × 強度</span><span class="en">In-support × intensity</span></a></li></ol></nav>
 <section id="emotions_instruct">
 <div class="sec-head"><span class="num">1</span><h2><span class="zh">七類情緒：文字指令</span><span class="en">Seven emotions: text instruction</span></h2></div>
 <div class="inputs"><b><span class="zh">輸入</span><span class="en">Input</span></b><dl><dt><span class="zh">文本</span><span class="en">Text</span></dt><dd>昨天晚上天空中出現了一朵形狀特殊的雲</dd><dt><span class="zh">instruct</span><span class="en">instruct</span></dt><dd>generate a {emo} version of the following sentence</dd></dl></div>
@@ -421,70 +421,6 @@ a:focus-visible,audio:focus-visible,button:focus-visible{outline:2px solid var(-
 <div class="card">
 <span class="cond"><span class="zh">w = 2</span><span class="en">w = 2</span></span>
 <audio controls preload="none" src="audio/intensity_29.mp3"></audio>
-</div>
-</div>
-</section>
-<section id="support">
-<div class="sec-head"><span class="num">5</span><h2><span class="zh">控制範圍的但書：資料範圍內與分佈外</span><span class="en">Limits of the control: in-range vs outside the data</span></h2></div>
-<p class="lead"><span class="zh">同一模型、同一情緒（憤怒）、同一句英文文本，僅改變所指定的激發度。第一格是訓練資料幾乎未出現的極端設定，其餘兩格落在訓練資料實際涵蓋的範圍內。第一格與其餘兩格的差異明顯，但那是模型在分佈外的外插行為；資料範圍內（第二、三格）的差異小得多——這正是客觀數值與聽感之間落差的來源。</span><span class="en">Same model, same emotion (angry), same English sentence; only the requested arousal changes. The first clip uses a setting the training data barely contains; the other two fall inside the range the data actually covers. The first clip clearly differs from the other two, but that is the model extrapolating outside its data: within the covered range (clips two and three) the difference is far smaller, which is where the gap between the objective numbers and what one hears comes from.</span></p>
-<p class="shared-text"><b><span class="zh">文本</span><span class="en">Text</span></b>The weather report says it will rain later this afternoon.</p>
-<ul class="stats"><li><span><span class="zh">完整掃描範圍 ρ</span><span class="en">ρ, full sweep range</span></span> 0.794</li><li><span><span class="zh">僅資料範圍內 ρ</span><span class="en">ρ, in-range only</span></span> 0.613</li><li><span><span class="zh">動態範圍</span><span class="en">Dynamic range</span></span> 0.152 → 0.081</li></ul>
-<div class="grid cols-3">
-<div class="card">
-<span class="cond"><span class="zh">設定 1.6（分佈外）</span><span class="en">Setting 1.6 (outside the data)</span></span>
-<audio controls preload="none" src="audio/support_00.mp3"></audio>
-<p class="note"><span class="zh">情緒辨識模型預測激發度 0.444</span><span class="en">Predicted arousal 0.444</span></p>
-</div>
-<div class="card">
-<span class="cond"><span class="zh">設定 4.0（資料範圍內，低）</span><span class="en">Setting 4.0 (in-range, low)</span></span>
-<audio controls preload="none" src="audio/support_01.mp3"></audio>
-<p class="note"><span class="zh">情緒辨識模型預測激發度 0.453</span><span class="en">Predicted arousal 0.453</span></p>
-</div>
-<div class="card">
-<span class="cond"><span class="zh">設定 5.8（資料範圍內，高）</span><span class="en">Setting 5.8 (in-range, high)</span></span>
-<audio controls preload="none" src="audio/support_02.mp3"></audio>
-<p class="note"><span class="zh">情緒辨識模型預測激發度 0.598</span><span class="en">Predicted arousal 0.598</span></p>
-</div>
-</div>
-</section>
-<section id="cer">
-<div class="sec-head"><span class="num">6</span><h2><span class="zh">資料擴充前後的中文可懂度</span><span class="en">Mandarin intelligibility, before and after data expansion</span></h2></div>
-<p class="lead"><span class="zh">擴充前的模型在中文上有明顯的遺忘現象，約四分之一的句子被合成為與文本無關的內容；擴充後幾乎消失。每格附上以 Whisper large-v2 轉寫所得的字元錯誤率與辨識結果。</span><span class="en">Before the expansion the model had clearly forgotten Mandarin: about a quarter of the sentences came out as content unrelated to the input text. Each cell shows the character error rate and the transcript from Whisper large-v2.</span></p>
-<p class="shared-text"><b><span class="zh">文本</span><span class="en">Text</span></b>昨天晚上下了好大的雨還打雷。<span class="en gloss"> It rained heavily last night, with thunder.</span></p>
-<ul class="stats"><li><span><span class="zh">平均字元錯誤率</span><span class="en">Mean CER</span></span> 0.32–0.39 → ≤ 0.03</li><li><span><span class="zh">崩壞句數</span><span class="en">Broken sentences</span></span> 31–39 / 135 → 0–1 / 135</li></ul>
-<div class="grid cols-2">
-<p class="rowlab"><span class="zh">憤怒</span><span class="en">Angry</span></p>
-<div class="card">
-<span class="cond"><span class="zh">擴充前（階段二）</span><span class="en">Before (Stage 2)</span></span>
-<audio controls preload="none" src="audio/cer_00.mp3"></audio>
-<p class="note"><span class="zh">字元錯誤率 1.08；辨識為「哎呀有何的事別哀我有褲子要揮」</span><span class="en">CER 1.08; recognised as “哎呀有何的事別哀我有褲子要揮”</span></p>
-</div>
-<div class="card">
-<span class="cond"><span class="zh">擴充後（最終模型）</span><span class="en">After (final model)</span></span>
-<audio controls preload="none" src="audio/cer_01.mp3"></audio>
-<p class="note"><span class="zh">字元錯誤率 0.00；辨識為「昨天晚上下了好大的雨還打雷」</span><span class="en">CER 0.00; recognised as “昨天晚上下了好大的雨還打雷”</span></p>
-</div>
-<p class="rowlab"><span class="zh">快樂</span><span class="en">Happy</span></p>
-<div class="card">
-<span class="cond"><span class="zh">擴充前（階段二）</span><span class="en">Before (Stage 2)</span></span>
-<audio controls preload="none" src="audio/cer_02.mp3"></audio>
-<p class="note"><span class="zh">字元錯誤率 1.54；辨識為「我的媽媽也是看到頭七的缺素頭七的頭七頭七的」</span><span class="en">CER 1.54; recognised as “我的媽媽也是看到頭七的缺素頭七的頭七頭七的”</span></p>
-</div>
-<div class="card">
-<span class="cond"><span class="zh">擴充後（最終模型）</span><span class="en">After (final model)</span></span>
-<audio controls preload="none" src="audio/cer_03.mp3"></audio>
-<p class="note"><span class="zh">字元錯誤率 0.00；辨識為「昨天晚上下了好大的雨還打雷」</span><span class="en">CER 0.00; recognised as “昨天晚上下了好大的雨還打雷”</span></p>
-</div>
-<p class="rowlab"><span class="zh">中性</span><span class="en">Neutral</span></p>
-<div class="card">
-<span class="cond"><span class="zh">擴充前（階段二）</span><span class="en">Before (Stage 2)</span></span>
-<audio controls preload="none" src="audio/cer_04.mp3"></audio>
-<p class="note"><span class="zh">字元錯誤率 1.31；辨識為「我一直在處理一直在撤家裡後的yes」</span><span class="en">CER 1.31; recognised as “我一直在處理一直在撤家裡後的yes”</span></p>
-</div>
-<div class="card">
-<span class="cond"><span class="zh">擴充後（最終模型）</span><span class="en">After (final model)</span></span>
-<audio controls preload="none" src="audio/cer_05.mp3"></audio>
-<p class="note"><span class="zh">字元錯誤率 0.00；辨識為「昨天晚上下了好大的雨還打雷」</span><span class="en">CER 0.00; recognised as “昨天晚上下了好大的雨還打雷”</span></p>
 </div>
 </div>
 </section>
