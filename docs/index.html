@@ -123,10 +123,9 @@ a:focus-visible,audio:focus-visible,button:focus-visible{outline:2px solid var(-
 </section>
 <section id="emoid_w">
 <div class="sec-head"><span class="num">2</span><h2><span class="zh">只給情緒類別時的強度旋鈕</span><span class="en">The intensity knob with the category alone</span></h2></div>
-<p class="lead"><span class="zh">情緒僅由類別下達，連續的激發度／支配度／愉悅度不給，只改變引導係數 w。</span><span class="en">The emotion is given by its category alone, with no continuous arousal / dominance / valence conditioning. Only the guidance coefficient w changes.</span></p>
 <p class="shared-text"><b><span class="zh">文本</span><span class="en">Text</span></b>昨天晚上天空中出現了一朵形狀特殊的雲。</p>
 <div class="grid cols-5">
-<p class="rowlab"><span class="zh">快樂</span><span class="en">Happy</span></p>
+<p class="rowlab"><span class="zh">快樂　emo id：happy　adv：nan</span><span class="en">Happy　emo id: happy　adv: nan</span></p>
 <div class="card">
 <span class="cond"><span class="zh">w = 0</span><span class="en">w = 0</span></span>
 <audio controls preload="none" src="audio/emoid_w_00.mp3"></audio>
@@ -147,7 +146,7 @@ a:focus-visible,audio:focus-visible,button:focus-visible{outline:2px solid var(-
 <span class="cond"><span class="zh">w = 2</span><span class="en">w = 2</span></span>
 <audio controls preload="none" src="audio/emoid_w_04.mp3"></audio>
 </div>
-<p class="rowlab"><span class="zh">悲傷</span><span class="en">Sad</span></p>
+<p class="rowlab"><span class="zh">悲傷　emo id：sad　adv：nan</span><span class="en">Sad　emo id: sad　adv: nan</span></p>
 <div class="card">
 <span class="cond"><span class="zh">w = 0</span><span class="en">w = 0</span></span>
 <audio controls preload="none" src="audio/emoid_w_05.mp3"></audio>
@@ -168,7 +167,7 @@ a:focus-visible,audio:focus-visible,button:focus-visible{outline:2px solid var(-
 <span class="cond"><span class="zh">w = 2</span><span class="en">w = 2</span></span>
 <audio controls preload="none" src="audio/emoid_w_09.mp3"></audio>
 </div>
-<p class="rowlab"><span class="zh">憤怒</span><span class="en">Angry</span></p>
+<p class="rowlab"><span class="zh">憤怒　emo id：angry　adv：nan</span><span class="en">Angry　emo id: angry　adv: nan</span></p>
 <div class="card">
 <span class="cond"><span class="zh">w = 0</span><span class="en">w = 0</span></span>
 <audio controls preload="none" src="audio/emoid_w_10.mp3"></audio>
@@ -189,7 +188,7 @@ a:focus-visible,audio:focus-visible,button:focus-visible{outline:2px solid var(-
 <span class="cond"><span class="zh">w = 2</span><span class="en">w = 2</span></span>
 <audio controls preload="none" src="audio/emoid_w_14.mp3"></audio>
 </div>
-<p class="rowlab"><span class="zh">驚訝</span><span class="en">Surprise</span></p>
+<p class="rowlab"><span class="zh">驚訝　emo id：surprise　adv：nan</span><span class="en">Surprise　emo id: surprise　adv: nan</span></p>
 <div class="card">
 <span class="cond"><span class="zh">w = 0</span><span class="en">w = 0</span></span>
 <audio controls preload="none" src="audio/emoid_w_15.mp3"></audio>
@@ -210,7 +209,7 @@ a:focus-visible,audio:focus-visible,button:focus-visible{outline:2px solid var(-
 <span class="cond"><span class="zh">w = 2</span><span class="en">w = 2</span></span>
 <audio controls preload="none" src="audio/emoid_w_19.mp3"></audio>
 </div>
-<p class="rowlab"><span class="zh">恐懼</span><span class="en">Fear</span></p>
+<p class="rowlab"><span class="zh">恐懼　emo id：fear　adv：nan</span><span class="en">Fear　emo id: fear　adv: nan</span></p>
 <div class="card">
 <span class="cond"><span class="zh">w = 0</span><span class="en">w = 0</span></span>
 <audio controls preload="none" src="audio/emoid_w_20.mp3"></audio>
@@ -231,7 +230,7 @@ a:focus-visible,audio:focus-visible,button:focus-visible{outline:2px solid var(-
 <span class="cond"><span class="zh">w = 2</span><span class="en">w = 2</span></span>
 <audio controls preload="none" src="audio/emoid_w_24.mp3"></audio>
 </div>
-<p class="rowlab"><span class="zh">厭惡</span><span class="en">Disgust</span></p>
+<p class="rowlab"><span class="zh">厭惡　emo id：disgust　adv：nan</span><span class="en">Disgust　emo id: disgust　adv: nan</span></p>
 <div class="card">
 <span class="cond"><span class="zh">w = 0</span><span class="en">w = 0</span></span>
 <audio controls preload="none" src="audio/emoid_w_25.mp3"></audio>
@@ -359,64 +358,78 @@ a:focus-visible,audio:focus-visible,button:focus-visible{outline:2px solid var(-
 <div class="card">
 <span class="cond"><span class="zh">ADV 條件，w = 1</span><span class="en">ADV conditioning, w = 1</span></span>
 <audio controls preload="none" src="audio/instruct_00.mp3"></audio>
+<p class="note"><span class="zh">emo id：neutral　adv：0.4567 / 0.4800,0.5200　w：1</span><span class="en">emo id: neutral   adv: 0.4567 / 0.4800,0.5200   w: 1</span></p>
 </div>
 <div class="card">
 <span class="cond"><span class="zh">文字指令</span><span class="en">Text instruction</span></span>
 <audio controls preload="none" src="audio/instruct_01.mp3"></audio>
+<p class="note"><span class="zh">instruct：generate a neutral version of the following sentence</span><span class="en">instruct: generate a neutral version of the following sentence</span></p>
 </div>
 <p class="rowlab"><span class="zh">快樂</span><span class="en">Happy</span></p>
 <div class="card">
 <span class="cond"><span class="zh">ADV 條件，w = 1</span><span class="en">ADV conditioning, w = 1</span></span>
 <audio controls preload="none" src="audio/instruct_02.mp3"></audio>
+<p class="note"><span class="zh">emo id：happy　adv：0.5783 / 0.6517,0.5983　w：1</span><span class="en">emo id: happy   adv: 0.5783 / 0.6517,0.5983   w: 1</span></p>
 </div>
 <div class="card">
 <span class="cond"><span class="zh">文字指令</span><span class="en">Text instruction</span></span>
 <audio controls preload="none" src="audio/instruct_03.mp3"></audio>
+<p class="note"><span class="zh">instruct：generate a happy version of the following sentence</span><span class="en">instruct: generate a happy version of the following sentence</span></p>
 </div>
 <p class="rowlab"><span class="zh">悲傷</span><span class="en">Sad</span></p>
 <div class="card">
 <span class="cond"><span class="zh">ADV 條件，w = 1</span><span class="en">ADV conditioning, w = 1</span></span>
 <audio controls preload="none" src="audio/instruct_04.mp3"></audio>
+<p class="note"><span class="zh">emo id：sad　adv：0.3983 / 0.3567,0.4683　w：1</span><span class="en">emo id: sad   adv: 0.3983 / 0.3567,0.4683   w: 1</span></p>
 </div>
 <div class="card">
 <span class="cond"><span class="zh">文字指令</span><span class="en">Text instruction</span></span>
 <audio controls preload="none" src="audio/instruct_05.mp3"></audio>
+<p class="note"><span class="zh">instruct：generate a sad version of the following sentence</span><span class="en">instruct: generate a sad version of the following sentence</span></p>
 </div>
 <p class="rowlab"><span class="zh">憤怒</span><span class="en">Angry</span></p>
 <div class="card">
 <span class="cond"><span class="zh">ADV 條件，w = 1</span><span class="en">ADV conditioning, w = 1</span></span>
 <audio controls preload="none" src="audio/instruct_06.mp3"></audio>
+<p class="note"><span class="zh">emo id：angry　adv：0.6950 / 0.2850,0.7100　w：1</span><span class="en">emo id: angry   adv: 0.6950 / 0.2850,0.7100   w: 1</span></p>
 </div>
 <div class="card">
 <span class="cond"><span class="zh">文字指令</span><span class="en">Text instruction</span></span>
 <audio controls preload="none" src="audio/instruct_07.mp3"></audio>
+<p class="note"><span class="zh">instruct：generate a angry version of the following sentence</span><span class="en">instruct: generate a angry version of the following sentence</span></p>
 </div>
 <p class="rowlab"><span class="zh">驚訝</span><span class="en">Surprise</span></p>
 <div class="card">
 <span class="cond"><span class="zh">ADV 條件，w = 1</span><span class="en">ADV conditioning, w = 1</span></span>
 <audio controls preload="none" src="audio/instruct_08.mp3"></audio>
+<p class="note"><span class="zh">emo id：surprise　adv：0.6383 / 0.5283,0.6333　w：1</span><span class="en">emo id: surprise   adv: 0.6383 / 0.5283,0.6333   w: 1</span></p>
 </div>
 <div class="card">
 <span class="cond"><span class="zh">文字指令</span><span class="en">Text instruction</span></span>
 <audio controls preload="none" src="audio/instruct_09.mp3"></audio>
+<p class="note"><span class="zh">instruct：generate a surprise version of the following sentence</span><span class="en">instruct: generate a surprise version of the following sentence</span></p>
 </div>
 <p class="rowlab"><span class="zh">恐懼</span><span class="en">Fear</span></p>
 <div class="card">
 <span class="cond"><span class="zh">ADV 條件，w = 1</span><span class="en">ADV conditioning, w = 1</span></span>
 <audio controls preload="none" src="audio/instruct_10.mp3"></audio>
+<p class="note"><span class="zh">emo id：fear　adv：nan / nan,nan　w：1</span><span class="en">emo id: fear   adv: nan / nan,nan   w: 1</span></p>
 </div>
 <div class="card">
 <span class="cond"><span class="zh">文字指令</span><span class="en">Text instruction</span></span>
 <audio controls preload="none" src="audio/instruct_11.mp3"></audio>
+<p class="note"><span class="zh">instruct：generate a fear version of the following sentence</span><span class="en">instruct: generate a fear version of the following sentence</span></p>
 </div>
 <p class="rowlab"><span class="zh">厭惡</span><span class="en">Disgust</span></p>
 <div class="card">
 <span class="cond"><span class="zh">ADV 條件，w = 1</span><span class="en">ADV conditioning, w = 1</span></span>
 <audio controls preload="none" src="audio/instruct_12.mp3"></audio>
+<p class="note"><span class="zh">emo id：disgust　adv：nan / nan,nan　w：1</span><span class="en">emo id: disgust   adv: nan / nan,nan   w: 1</span></p>
 </div>
 <div class="card">
 <span class="cond"><span class="zh">文字指令</span><span class="en">Text instruction</span></span>
 <audio controls preload="none" src="audio/instruct_13.mp3"></audio>
+<p class="note"><span class="zh">instruct：generate a disgust version of the following sentence</span><span class="en">instruct: generate a disgust version of the following sentence</span></p>
 </div>
 </div>
 </section>
