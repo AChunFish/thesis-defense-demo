@@ -91,7 +91,7 @@ a:focus-visible,audio:focus-visible,button:focus-visible{outline:2px solid var(-
 <header>
 <div class="langs"><button type="button" data-lang="zh" aria-pressed="true">中文</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
 <h1><span class="zh">DEMO</span><span class="en">DEMO</span></h1></header>
-<nav><ol><li><a href="#emotions"><span class="zh">七類情緒</span><span class="en">Seven emotions</span></a></li><li><a href="#emoid_w"><span class="zh">只給類別 × 強度</span><span class="en">Category only × intensity</span></a></li><li><a href="#intensity"><span class="zh">強度旋鈕</span><span class="en">Intensity knob</span></a></li><li><a href="#support"><span class="zh">控制範圍的但書</span><span class="en">Limits of the control</span></a></li><li><a href="#instruct"><span class="zh">文字指令</span><span class="en">Text instruction</span></a></li><li><a href="#baseline"><span class="zh">原版模型的指令模式</span><span class="en">Off-the-shelf instruct mode</span></a></li><li><a href="#cer"><span class="zh">中文可懂度</span><span class="en">Mandarin intelligibility</span></a></li><li><a href="#steering"><span class="zh">表徵方向注入</span><span class="en">Activation steering</span></a></li></ol></nav>
+<nav><ol><li><a href="#emotions"><span class="zh">七類情緒</span><span class="en">Seven emotions</span></a></li><li><a href="#emoid_w"><span class="zh">只給類別 × 強度</span><span class="en">Category only × intensity</span></a></li><li><a href="#intensity"><span class="zh">支撐區內 × 強度</span><span class="en">In-support × intensity</span></a></li><li><a href="#support"><span class="zh">控制範圍的但書</span><span class="en">Limits of the control</span></a></li><li><a href="#instruct"><span class="zh">文字指令</span><span class="en">Text instruction</span></a></li><li><a href="#baseline"><span class="zh">原版模型的指令模式</span><span class="en">Off-the-shelf instruct mode</span></a></li><li><a href="#cer"><span class="zh">中文可懂度</span><span class="en">Mandarin intelligibility</span></a></li><li><a href="#steering"><span class="zh">表徵方向注入</span><span class="en">Activation steering</span></a></li></ol></nav>
 <section id="emotions">
 <div class="sec-head"><span class="num">1</span><h2><span class="zh">七類情緒</span><span class="en">Seven emotions</span></h2></div>
 <div class="inputs"><b><span class="zh">輸入</span><span class="en">Input</span></b><dl><dt><span class="zh">文本</span><span class="en">Text</span></dt><dd>昨天晚上天空中出現了一朵形狀特殊的雲。</dd><dt><span class="zh">emo id</span><span class="en">emo id</span></dt><dd>neutral / happy / sad / angry / surprise / fear / disgust</dd><dt><span class="zh">adv</span><span class="en">adv</span></dt><dd>null</dd><dt><span class="zh">w</span><span class="en">w</span></dt><dd>1</dd></dl></div>
@@ -259,39 +259,37 @@ a:focus-visible,audio:focus-visible,button:focus-visible{outline:2px solid var(-
 </div>
 </section>
 <section id="intensity">
-<div class="sec-head"><span class="num">3</span><h2><span class="zh">強度旋鈕：引導係數 w</span><span class="en">Intensity knob: guidance coefficient w</span></h2></div>
-<p class="lead"><span class="zh">w 為推論時的引導係數，用來放大情緒條件的影響：w=0 即一般的條件式生成，w 越大，模型越往「有情緒條件」與「無情緒條件」之間的差異方向外推。實驗中以 w ≈ 1 表現最佳，再往上雖然聽感更誇張，卻已是分佈外的外插。</span><span class="en">w is the guidance coefficient applied at inference to amplify the emotion condition. w=0 is plain conditional generation; larger w extrapolates further along the direction between the conditioned and unconditioned outputs. In our experiments w ≈ 1 works best: beyond that the effect sounds stronger but is already extrapolation outside the training data.</span></p>
-<p class="shared-text"><b><span class="zh">文本</span><span class="en">Text</span></b>他把書放回書架的第二層。<span class="en gloss"> He put the book back on the second shelf.</span></p>
-<div class="grid cols-3">
-<p class="rowlab"><span class="zh">憤怒</span><span class="en">Angry</span></p>
+<div class="sec-head"><span class="num">3</span><h2><span class="zh">資料支撐區內的強度旋鈕</span><span class="en">The intensity knob inside the data support region</span></h2></div>
+<div class="inputs"><b><span class="zh">輸入</span><span class="en">Input</span></b><dl><dt><span class="zh">文本</span><span class="en">Text</span></dt><dd>昨天晚上天空中出現了一朵形狀特殊的雲。</dd><dt><span class="zh">emo id</span><span class="en">emo id</span></dt><dd>neutral / happy / sad / angry / surprise / fear / disgust</dd><dt><span class="zh">adv</span><span class="en">adv</span></dt><dd><span class="zh">各情緒訓練資料質心，落在該情緒支撐區內（數值見各列）</span><span class="en">each emotion&#x27;s training-data centroid, inside its own support region (values on each row)</span></dd></dl></div>
+<div class="grid cols-5">
+<p class="rowlab"><span class="zh">中性　adv：0.4567 / 0.4800,0.5200</span><span class="en">Neutral　adv: 0.4567 / 0.4800,0.5200</span></p>
 <div class="card">
 <span class="cond"><span class="zh">w = 0</span><span class="en">w = 0</span></span>
 <audio controls preload="none" src="audio/intensity_00.mp3"></audio>
 </div>
 <div class="card">
-<span class="cond"><span class="zh">w = 1</span><span class="en">w = 1</span></span>
+<span class="cond"><span class="zh">w = 0.5</span><span class="en">w = 0.5</span></span>
 <audio controls preload="none" src="audio/intensity_01.mp3"></audio>
 </div>
 <div class="card">
-<span class="cond"><span class="zh">w = 2</span><span class="en">w = 2</span></span>
+<span class="cond"><span class="zh">w = 1</span><span class="en">w = 1</span></span>
 <audio controls preload="none" src="audio/intensity_02.mp3"></audio>
 </div>
-<p class="rowlab"><span class="zh">快樂</span><span class="en">Happy</span></p>
 <div class="card">
-<span class="cond"><span class="zh">w = 0</span><span class="en">w = 0</span></span>
+<span class="cond"><span class="zh">w = 1.5</span><span class="en">w = 1.5</span></span>
 <audio controls preload="none" src="audio/intensity_03.mp3"></audio>
 </div>
 <div class="card">
-<span class="cond"><span class="zh">w = 1</span><span class="en">w = 1</span></span>
+<span class="cond"><span class="zh">w = 2</span><span class="en">w = 2</span></span>
 <audio controls preload="none" src="audio/intensity_04.mp3"></audio>
 </div>
-<div class="card">
-<span class="cond"><span class="zh">w = 2</span><span class="en">w = 2</span></span>
-<audio controls preload="none" src="audio/intensity_05.mp3"></audio>
-</div>
-<p class="rowlab"><span class="zh">悲傷</span><span class="en">Sad</span></p>
+<p class="rowlab"><span class="zh">快樂　adv：0.5783 / 0.6517,0.5983</span><span class="en">Happy　adv: 0.5783 / 0.6517,0.5983</span></p>
 <div class="card">
 <span class="cond"><span class="zh">w = 0</span><span class="en">w = 0</span></span>
+<audio controls preload="none" src="audio/intensity_05.mp3"></audio>
+</div>
+<div class="card">
+<span class="cond"><span class="zh">w = 0.5</span><span class="en">w = 0.5</span></span>
 <audio controls preload="none" src="audio/intensity_06.mp3"></audio>
 </div>
 <div class="card">
@@ -299,34 +297,117 @@ a:focus-visible,audio:focus-visible,button:focus-visible{outline:2px solid var(-
 <audio controls preload="none" src="audio/intensity_07.mp3"></audio>
 </div>
 <div class="card">
-<span class="cond"><span class="zh">w = 2</span><span class="en">w = 2</span></span>
+<span class="cond"><span class="zh">w = 1.5</span><span class="en">w = 1.5</span></span>
 <audio controls preload="none" src="audio/intensity_08.mp3"></audio>
 </div>
-<p class="rowlab"><span class="zh">恐懼</span><span class="en">Fear</span></p>
 <div class="card">
-<span class="cond"><span class="zh">w = 0</span><span class="en">w = 0</span></span>
+<span class="cond"><span class="zh">w = 2</span><span class="en">w = 2</span></span>
 <audio controls preload="none" src="audio/intensity_09.mp3"></audio>
 </div>
+<p class="rowlab"><span class="zh">悲傷　adv：0.3983 / 0.3567,0.4683</span><span class="en">Sad　adv: 0.3983 / 0.3567,0.4683</span></p>
 <div class="card">
-<span class="cond"><span class="zh">w = 1</span><span class="en">w = 1</span></span>
+<span class="cond"><span class="zh">w = 0</span><span class="en">w = 0</span></span>
 <audio controls preload="none" src="audio/intensity_10.mp3"></audio>
 </div>
 <div class="card">
-<span class="cond"><span class="zh">w = 2</span><span class="en">w = 2</span></span>
+<span class="cond"><span class="zh">w = 0.5</span><span class="en">w = 0.5</span></span>
 <audio controls preload="none" src="audio/intensity_11.mp3"></audio>
-</div>
-<p class="rowlab"><span class="zh">厭惡</span><span class="en">Disgust</span></p>
-<div class="card">
-<span class="cond"><span class="zh">w = 0</span><span class="en">w = 0</span></span>
-<audio controls preload="none" src="audio/intensity_12.mp3"></audio>
 </div>
 <div class="card">
 <span class="cond"><span class="zh">w = 1</span><span class="en">w = 1</span></span>
+<audio controls preload="none" src="audio/intensity_12.mp3"></audio>
+</div>
+<div class="card">
+<span class="cond"><span class="zh">w = 1.5</span><span class="en">w = 1.5</span></span>
 <audio controls preload="none" src="audio/intensity_13.mp3"></audio>
 </div>
 <div class="card">
 <span class="cond"><span class="zh">w = 2</span><span class="en">w = 2</span></span>
 <audio controls preload="none" src="audio/intensity_14.mp3"></audio>
+</div>
+<p class="rowlab"><span class="zh">憤怒　adv：0.6950 / 0.2850,0.7100</span><span class="en">Angry　adv: 0.6950 / 0.2850,0.7100</span></p>
+<div class="card">
+<span class="cond"><span class="zh">w = 0</span><span class="en">w = 0</span></span>
+<audio controls preload="none" src="audio/intensity_15.mp3"></audio>
+</div>
+<div class="card">
+<span class="cond"><span class="zh">w = 0.5</span><span class="en">w = 0.5</span></span>
+<audio controls preload="none" src="audio/intensity_16.mp3"></audio>
+</div>
+<div class="card">
+<span class="cond"><span class="zh">w = 1</span><span class="en">w = 1</span></span>
+<audio controls preload="none" src="audio/intensity_17.mp3"></audio>
+</div>
+<div class="card">
+<span class="cond"><span class="zh">w = 1.5</span><span class="en">w = 1.5</span></span>
+<audio controls preload="none" src="audio/intensity_18.mp3"></audio>
+</div>
+<div class="card">
+<span class="cond"><span class="zh">w = 2</span><span class="en">w = 2</span></span>
+<audio controls preload="none" src="audio/intensity_19.mp3"></audio>
+</div>
+<p class="rowlab"><span class="zh">驚訝　adv：0.6383 / 0.5283,0.6333</span><span class="en">Surprise　adv: 0.6383 / 0.5283,0.6333</span></p>
+<div class="card">
+<span class="cond"><span class="zh">w = 0</span><span class="en">w = 0</span></span>
+<audio controls preload="none" src="audio/intensity_20.mp3"></audio>
+</div>
+<div class="card">
+<span class="cond"><span class="zh">w = 0.5</span><span class="en">w = 0.5</span></span>
+<audio controls preload="none" src="audio/intensity_21.mp3"></audio>
+</div>
+<div class="card">
+<span class="cond"><span class="zh">w = 1</span><span class="en">w = 1</span></span>
+<audio controls preload="none" src="audio/intensity_22.mp3"></audio>
+</div>
+<div class="card">
+<span class="cond"><span class="zh">w = 1.5</span><span class="en">w = 1.5</span></span>
+<audio controls preload="none" src="audio/intensity_23.mp3"></audio>
+</div>
+<div class="card">
+<span class="cond"><span class="zh">w = 2</span><span class="en">w = 2</span></span>
+<audio controls preload="none" src="audio/intensity_24.mp3"></audio>
+</div>
+<p class="rowlab"><span class="zh">恐懼　adv：0.5096 / 0.3927,0.4950</span><span class="en">Fear　adv: 0.5096 / 0.3927,0.4950</span></p>
+<div class="card">
+<span class="cond"><span class="zh">w = 0</span><span class="en">w = 0</span></span>
+<audio controls preload="none" src="audio/intensity_25.mp3"></audio>
+</div>
+<div class="card">
+<span class="cond"><span class="zh">w = 0.5</span><span class="en">w = 0.5</span></span>
+<audio controls preload="none" src="audio/intensity_26.mp3"></audio>
+</div>
+<div class="card">
+<span class="cond"><span class="zh">w = 1</span><span class="en">w = 1</span></span>
+<audio controls preload="none" src="audio/intensity_27.mp3"></audio>
+</div>
+<div class="card">
+<span class="cond"><span class="zh">w = 1.5</span><span class="en">w = 1.5</span></span>
+<audio controls preload="none" src="audio/intensity_28.mp3"></audio>
+</div>
+<div class="card">
+<span class="cond"><span class="zh">w = 2</span><span class="en">w = 2</span></span>
+<audio controls preload="none" src="audio/intensity_29.mp3"></audio>
+</div>
+<p class="rowlab"><span class="zh">厭惡　adv：0.5870 / 0.3310,0.6201</span><span class="en">Disgust　adv: 0.5870 / 0.3310,0.6201</span></p>
+<div class="card">
+<span class="cond"><span class="zh">w = 0</span><span class="en">w = 0</span></span>
+<audio controls preload="none" src="audio/intensity_30.mp3"></audio>
+</div>
+<div class="card">
+<span class="cond"><span class="zh">w = 0.5</span><span class="en">w = 0.5</span></span>
+<audio controls preload="none" src="audio/intensity_31.mp3"></audio>
+</div>
+<div class="card">
+<span class="cond"><span class="zh">w = 1</span><span class="en">w = 1</span></span>
+<audio controls preload="none" src="audio/intensity_32.mp3"></audio>
+</div>
+<div class="card">
+<span class="cond"><span class="zh">w = 1.5</span><span class="en">w = 1.5</span></span>
+<audio controls preload="none" src="audio/intensity_33.mp3"></audio>
+</div>
+<div class="card">
+<span class="cond"><span class="zh">w = 2</span><span class="en">w = 2</span></span>
+<audio controls preload="none" src="audio/intensity_34.mp3"></audio>
 </div>
 </div>
 </section>
