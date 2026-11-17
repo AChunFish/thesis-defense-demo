@@ -91,7 +91,7 @@ a:focus-visible,audio:focus-visible,button:focus-visible{outline:2px solid var(-
 <header>
 <div class="langs"><button type="button" data-lang="zh" aria-pressed="true">中文</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
 <h1><span class="zh">DEMO</span><span class="en">DEMO</span></h1></header>
-<nav><ol><li><a href="#emotions"><span class="zh">七類情緒</span><span class="en">Seven emotions</span></a></li><li><a href="#emoid_w"><span class="zh">只給類別 × 強度</span><span class="en">Category only × intensity</span></a></li><li><a href="#intensity"><span class="zh">支撐區內 × 強度</span><span class="en">In-support × intensity</span></a></li><li><a href="#support"><span class="zh">控制範圍的但書</span><span class="en">Limits of the control</span></a></li><li><a href="#instruct"><span class="zh">文字指令</span><span class="en">Text instruction</span></a></li><li><a href="#baseline"><span class="zh">原版模型的指令模式</span><span class="en">Off-the-shelf instruct mode</span></a></li><li><a href="#cer"><span class="zh">中文可懂度</span><span class="en">Mandarin intelligibility</span></a></li><li><a href="#steering"><span class="zh">表徵方向注入</span><span class="en">Activation steering</span></a></li></ol></nav>
+<nav><ol><li><a href="#emotions"><span class="zh">七類情緒</span><span class="en">Seven emotions</span></a></li><li><a href="#emoid_w"><span class="zh">只給類別 × 強度</span><span class="en">Category only × intensity</span></a></li><li><a href="#intensity"><span class="zh">支撐區內 × 強度</span><span class="en">In-support × intensity</span></a></li><li><a href="#support"><span class="zh">控制範圍的但書</span><span class="en">Limits of the control</span></a></li><li><a href="#cer"><span class="zh">中文可懂度</span><span class="en">Mandarin intelligibility</span></a></li></ol></nav>
 <section id="emotions">
 <div class="sec-head"><span class="num">1</span><h2><span class="zh">七類情緒</span><span class="en">Seven emotions</span></h2></div>
 <div class="inputs"><b><span class="zh">輸入</span><span class="en">Input</span></b><dl><dt><span class="zh">文本</span><span class="en">Text</span></dt><dd>昨天晚上天空中出現了一朵形狀特殊的雲。</dd><dt><span class="zh">emo id</span><span class="en">emo id</span></dt><dd>neutral / happy / sad / angry / surprise / fear / disgust</dd><dt><span class="zh">adv</span><span class="en">adv</span></dt><dd>null</dd><dt><span class="zh">w</span><span class="en">w</span></dt><dd>1</dd></dl></div>
@@ -434,132 +434,8 @@ a:focus-visible,audio:focus-visible,button:focus-visible{outline:2px solid var(-
 </div>
 </div>
 </section>
-<section id="instruct">
-<div class="sec-head"><span class="num">5</span><h2><span class="zh">兩種下達情緒的方式</span><span class="en">Two ways of requesting the emotion</span></h2></div>
-<p class="lead"><span class="zh">右欄來自第二個模型：同樣以 CosyVoice 2 為基礎，但不給 ADV 向量、也沒有引導係數，情緒只由一句固定的模板指定（generate a {emotion} version of the following sentence），以 19,854 句純中文資料微調。左欄是前兩區那個模型在 w=1 的輸出，兩欄同句、同語者、同隨機種子。以八句語意中性的文本量測：文字指令下，換情緒造成的激發度差異（標準差 0.063）大於換句子造成的差異（0.051）；ADV 條件在 w=1 則相反（0.033 對 0.046），也就是換情緒的效果比換句子還小。文字指令在預設狀態下的情緒分離度，相當於 ADV 條件推到 w=2——而後者已是分佈外的外插。</span><span class="en">The right-hand column comes from a second model, also built on CosyVoice 2, but given no ADV vector and no guidance coefficient: the emotion is carried by a fixed template (generate a {emotion} version of the following sentence) and nothing else, fine-tuned on 19,854 Mandarin-only utterances. The left-hand column is the model from the previous two sections at w=1. Same sentence, same speaker prompt, same random seed. Measured over eight semantically neutral sentences: with the text instruction, changing the emotion moves arousal more (SD 0.063) than changing the sentence does (0.051); with ADV conditioning at w=1 the reverse holds (0.033 vs 0.046) -- the emotion matters less than the sentence. The text instruction reaches, with no knob at all, the separation that ADV conditioning needs w=2 to reach, and w=2 is already extrapolation outside the training data.</span></p>
-<p class="shared-text"><b><span class="zh">文本</span><span class="en">Text</span></b>他把書放回書架的第二層。<span class="en gloss"> He put the book back on the second shelf.</span></p>
-<ul class="stats"><li><span><span class="zh">情緒間激發度標準差</span><span class="en">Between-emotion arousal SD</span></span> 0.033 (w=1) → 0.063</li><li><span><span class="zh">同一情緒換句子</span><span class="en">Same emotion, different sentence</span></span> 0.046 → 0.051</li><li><span><span class="zh">純中文訓練資料</span><span class="en">Mandarin-only training data</span></span> 19,854</li></ul>
-<div class="grid cols-2">
-<p class="rowlab"><span class="zh">中性</span><span class="en">Neutral</span></p>
-<div class="card">
-<span class="cond"><span class="zh">ADV 條件，w = 1</span><span class="en">ADV conditioning, w = 1</span></span>
-<audio controls preload="none" src="audio/instruct_00.mp3"></audio>
-<p class="note"><span class="zh">emo id：neutral　adv：0.4567 / 0.4800,0.5200　w：1</span><span class="en">emo id: neutral   adv: 0.4567 / 0.4800,0.5200   w: 1</span></p>
-</div>
-<div class="card">
-<span class="cond"><span class="zh">文字指令</span><span class="en">Text instruction</span></span>
-<audio controls preload="none" src="audio/instruct_01.mp3"></audio>
-<p class="note"><span class="zh">instruct：generate a neutral version of the following sentence</span><span class="en">instruct: generate a neutral version of the following sentence</span></p>
-</div>
-<p class="rowlab"><span class="zh">快樂</span><span class="en">Happy</span></p>
-<div class="card">
-<span class="cond"><span class="zh">ADV 條件，w = 1</span><span class="en">ADV conditioning, w = 1</span></span>
-<audio controls preload="none" src="audio/instruct_02.mp3"></audio>
-<p class="note"><span class="zh">emo id：happy　adv：0.5783 / 0.6517,0.5983　w：1</span><span class="en">emo id: happy   adv: 0.5783 / 0.6517,0.5983   w: 1</span></p>
-</div>
-<div class="card">
-<span class="cond"><span class="zh">文字指令</span><span class="en">Text instruction</span></span>
-<audio controls preload="none" src="audio/instruct_03.mp3"></audio>
-<p class="note"><span class="zh">instruct：generate a happy version of the following sentence</span><span class="en">instruct: generate a happy version of the following sentence</span></p>
-</div>
-<p class="rowlab"><span class="zh">悲傷</span><span class="en">Sad</span></p>
-<div class="card">
-<span class="cond"><span class="zh">ADV 條件，w = 1</span><span class="en">ADV conditioning, w = 1</span></span>
-<audio controls preload="none" src="audio/instruct_04.mp3"></audio>
-<p class="note"><span class="zh">emo id：sad　adv：0.3983 / 0.3567,0.4683　w：1</span><span class="en">emo id: sad   adv: 0.3983 / 0.3567,0.4683   w: 1</span></p>
-</div>
-<div class="card">
-<span class="cond"><span class="zh">文字指令</span><span class="en">Text instruction</span></span>
-<audio controls preload="none" src="audio/instruct_05.mp3"></audio>
-<p class="note"><span class="zh">instruct：generate a sad version of the following sentence</span><span class="en">instruct: generate a sad version of the following sentence</span></p>
-</div>
-<p class="rowlab"><span class="zh">憤怒</span><span class="en">Angry</span></p>
-<div class="card">
-<span class="cond"><span class="zh">ADV 條件，w = 1</span><span class="en">ADV conditioning, w = 1</span></span>
-<audio controls preload="none" src="audio/instruct_06.mp3"></audio>
-<p class="note"><span class="zh">emo id：angry　adv：0.6950 / 0.2850,0.7100　w：1</span><span class="en">emo id: angry   adv: 0.6950 / 0.2850,0.7100   w: 1</span></p>
-</div>
-<div class="card">
-<span class="cond"><span class="zh">文字指令</span><span class="en">Text instruction</span></span>
-<audio controls preload="none" src="audio/instruct_07.mp3"></audio>
-<p class="note"><span class="zh">instruct：generate a angry version of the following sentence</span><span class="en">instruct: generate a angry version of the following sentence</span></p>
-</div>
-<p class="rowlab"><span class="zh">驚訝</span><span class="en">Surprise</span></p>
-<div class="card">
-<span class="cond"><span class="zh">ADV 條件，w = 1</span><span class="en">ADV conditioning, w = 1</span></span>
-<audio controls preload="none" src="audio/instruct_08.mp3"></audio>
-<p class="note"><span class="zh">emo id：surprise　adv：0.6383 / 0.5283,0.6333　w：1</span><span class="en">emo id: surprise   adv: 0.6383 / 0.5283,0.6333   w: 1</span></p>
-</div>
-<div class="card">
-<span class="cond"><span class="zh">文字指令</span><span class="en">Text instruction</span></span>
-<audio controls preload="none" src="audio/instruct_09.mp3"></audio>
-<p class="note"><span class="zh">instruct：generate a surprise version of the following sentence</span><span class="en">instruct: generate a surprise version of the following sentence</span></p>
-</div>
-<p class="rowlab"><span class="zh">恐懼</span><span class="en">Fear</span></p>
-<div class="card">
-<span class="cond"><span class="zh">ADV 條件，w = 1</span><span class="en">ADV conditioning, w = 1</span></span>
-<audio controls preload="none" src="audio/instruct_10.mp3"></audio>
-<p class="note"><span class="zh">emo id：fear　adv：nan / nan,nan　w：1</span><span class="en">emo id: fear   adv: nan / nan,nan   w: 1</span></p>
-</div>
-<div class="card">
-<span class="cond"><span class="zh">文字指令</span><span class="en">Text instruction</span></span>
-<audio controls preload="none" src="audio/instruct_11.mp3"></audio>
-<p class="note"><span class="zh">instruct：generate a fear version of the following sentence</span><span class="en">instruct: generate a fear version of the following sentence</span></p>
-</div>
-<p class="rowlab"><span class="zh">厭惡</span><span class="en">Disgust</span></p>
-<div class="card">
-<span class="cond"><span class="zh">ADV 條件，w = 1</span><span class="en">ADV conditioning, w = 1</span></span>
-<audio controls preload="none" src="audio/instruct_12.mp3"></audio>
-<p class="note"><span class="zh">emo id：disgust　adv：nan / nan,nan　w：1</span><span class="en">emo id: disgust   adv: nan / nan,nan   w: 1</span></p>
-</div>
-<div class="card">
-<span class="cond"><span class="zh">文字指令</span><span class="en">Text instruction</span></span>
-<audio controls preload="none" src="audio/instruct_13.mp3"></audio>
-<p class="note"><span class="zh">instruct：generate a disgust version of the following sentence</span><span class="en">instruct: generate a disgust version of the following sentence</span></p>
-</div>
-</div>
-</section>
-<section id="baseline">
-<div class="sec-head"><span class="num">6</span><h2><span class="zh">對照：原版模型的指令模式</span><span class="en">Baseline: instruct mode on the un-fine-tuned model</span></h2></div>
-<p class="lead"><span class="zh">未經本研究任何微調的原版 CosyVoice 2，只用一句自然語言描述情緒。文本、語者提示、隨機種子與前面各區相同，可直接對比。同一模型的中性錨點預測激發度為 0.549，可作為「這句指令加了多少情緒」的零點。注意原版模型沒有強度旋鈕：加強句只是換措辭，無法連續調整。</span><span class="en">The original CosyVoice 2, with none of this study&#x27;s fine-tuning, given only a natural-language description of the emotion. Sentence, speaker prompt and random seed match the other sections, so the clips are directly comparable. The same model&#x27;s neutral anchor reads 0.549, the zero point for how much emotion the instruction actually added. Note that this model has no intensity knob: the stronger wording is a different phrase, not a continuous setting.</span></p>
-<p class="shared-text"><b><span class="zh">文本</span><span class="en">Text</span></b>他把書放回書架的第二層<span class="en gloss"> He put the book back on the second shelf.</span></p>
-<div class="grid cols-3">
-<p class="rowlab"><span class="zh">憤怒</span><span class="en">Angry</span></p>
-<div class="card">
-<span class="cond"><span class="zh">中文標準句</span><span class="en">Mandarin, standard</span></span>
-<audio controls preload="none" src="audio/baseline_00.mp3"></audio>
-<p class="note"><span class="zh">預測激發度 0.501</span><span class="en">Predicted arousal 0.501</span></p>
-</div>
-<div class="card">
-<span class="cond"><span class="zh">中文加強句</span><span class="en">Mandarin, stronger wording</span></span>
-<audio controls preload="none" src="audio/baseline_01.mp3"></audio>
-<p class="note"><span class="zh">預測激發度 0.617</span><span class="en">Predicted arousal 0.617</span></p>
-</div>
-<div class="card">
-<span class="cond"><span class="zh">英文標準句</span><span class="en">English, standard</span></span>
-<audio controls preload="none" src="audio/baseline_02.mp3"></audio>
-<p class="note"><span class="zh">預測激發度 0.623</span><span class="en">Predicted arousal 0.623</span></p>
-</div>
-<p class="rowlab"><span class="zh">驚訝</span><span class="en">Surprise</span></p>
-<div class="card">
-<span class="cond"><span class="zh">中文標準句</span><span class="en">Mandarin, standard</span></span>
-<audio controls preload="none" src="audio/baseline_03.mp3"></audio>
-<p class="note"><span class="zh">預測激發度 0.559</span><span class="en">Predicted arousal 0.559</span></p>
-</div>
-<div class="card">
-<span class="cond"><span class="zh">中文加強句</span><span class="en">Mandarin, stronger wording</span></span>
-<audio controls preload="none" src="audio/baseline_04.mp3"></audio>
-<p class="note"><span class="zh">預測激發度 0.538</span><span class="en">Predicted arousal 0.538</span></p>
-</div>
-<div class="card">
-<span class="cond"><span class="zh">英文標準句</span><span class="en">English, standard</span></span>
-<audio controls preload="none" src="audio/baseline_05.mp3"></audio>
-<p class="note"><span class="zh">預測激發度 0.559</span><span class="en">Predicted arousal 0.559</span></p>
-</div>
-</div>
-</section>
 <section id="cer">
-<div class="sec-head"><span class="num">7</span><h2><span class="zh">資料擴充前後的中文可懂度</span><span class="en">Mandarin intelligibility, before and after data expansion</span></h2></div>
+<div class="sec-head"><span class="num">5</span><h2><span class="zh">資料擴充前後的中文可懂度</span><span class="en">Mandarin intelligibility, before and after data expansion</span></h2></div>
 <p class="lead"><span class="zh">擴充前的模型在中文上有明顯的遺忘現象，約四分之一的句子被合成為與文本無關的內容；擴充後幾乎消失。每格附上以 Whisper large-v2 轉寫所得的字元錯誤率與辨識結果。</span><span class="en">Before the expansion the model had clearly forgotten Mandarin: about a quarter of the sentences came out as content unrelated to the input text. Each cell shows the character error rate and the transcript from Whisper large-v2.</span></p>
 <p class="shared-text"><b><span class="zh">文本</span><span class="en">Text</span></b>昨天晚上下了好大的雨還打雷。<span class="en gloss"> It rained heavily last night, with thunder.</span></p>
 <ul class="stats"><li><span><span class="zh">平均字元錯誤率</span><span class="en">Mean CER</span></span> 0.32–0.39 → ≤ 0.03</li><li><span><span class="zh">崩壞句數</span><span class="en">Broken sentences</span></span> 31–39 / 135 → 0–1 / 135</li></ul>
@@ -596,44 +472,6 @@ a:focus-visible,audio:focus-visible,button:focus-visible{outline:2px solid var(-
 <span class="cond"><span class="zh">擴充後（最終模型）</span><span class="en">After (final model)</span></span>
 <audio controls preload="none" src="audio/cer_05.mp3"></audio>
 <p class="note"><span class="zh">字元錯誤率 0.00；辨識為「昨天晚上下了好大的雨還打雷」</span><span class="en">CER 0.00; recognised as “昨天晚上下了好大的雨還打雷”</span></p>
-</div>
-</div>
-</section>
-<section id="steering">
-<div class="sec-head"><span class="num">8</span><h2><span class="zh">未微調模型上的表徵方向注入</span><span class="en">Activation steering on the un-fine-tuned model</span></h2></div>
-<p class="lead"><span class="zh">不更新任何權重，於語言模型第 16 層的連續表徵加上一個激發度方向，強度為 α。此為分析章節所用的聽測刺激。</span><span class="en">No weights are updated: an arousal direction, scaled by α, is added to the continuous representation at layer 16 of the language model. These are the listening-test stimuli used in the analysis chapter.</span></p>
-<div class="grid cols-3">
-<p class="rowlab"><span class="zh">英文</span><span class="en">English</span><span class="t">The library added several new titles to its shelves.</span></p>
-<div class="card">
-<span class="cond"><span class="zh">α 最低</span><span class="en">α lowest</span></span>
-<audio controls preload="none" src="audio/steering_00.mp3"></audio>
-<p class="note"><span class="zh">注入強度 α = -2；預測激發度 0.397</span><span class="en">Injection strength α = -2; predicted arousal 0.397</span></p>
-</div>
-<div class="card">
-<span class="cond"><span class="zh">α = 0（原始）</span><span class="en">α = 0 (unmodified)</span></span>
-<audio controls preload="none" src="audio/steering_01.mp3"></audio>
-<p class="note"><span class="zh">注入強度 α = +0；預測激發度 0.459</span><span class="en">Injection strength α = +0; predicted arousal 0.459</span></p>
-</div>
-<div class="card">
-<span class="cond"><span class="zh">α 最高</span><span class="en">α highest</span></span>
-<audio controls preload="none" src="audio/steering_02.mp3"></audio>
-<p class="note"><span class="zh">注入強度 α = +2；預測激發度 0.490</span><span class="en">Injection strength α = +2; predicted arousal 0.490</span></p>
-</div>
-<p class="rowlab"><span class="zh">中文</span><span class="en">Mandarin</span><span class="t">今天的天氣有點潮溼但還算溫暖<span class="en gloss"> Today&#x27;s weather is a little humid but still fairly warm.</span></span></p>
-<div class="card">
-<span class="cond"><span class="zh">α 最低</span><span class="en">α lowest</span></span>
-<audio controls preload="none" src="audio/steering_03.mp3"></audio>
-<p class="note"><span class="zh">注入強度 α = -3；預測激發度 0.218</span><span class="en">Injection strength α = -3; predicted arousal 0.218</span></p>
-</div>
-<div class="card">
-<span class="cond"><span class="zh">α = 0（原始）</span><span class="en">α = 0 (unmodified)</span></span>
-<audio controls preload="none" src="audio/steering_04.mp3"></audio>
-<p class="note"><span class="zh">注入強度 α = +0；預測激發度 0.450</span><span class="en">Injection strength α = +0; predicted arousal 0.450</span></p>
-</div>
-<div class="card">
-<span class="cond"><span class="zh">α 最高</span><span class="en">α highest</span></span>
-<audio controls preload="none" src="audio/steering_05.mp3"></audio>
-<p class="note"><span class="zh">注入強度 α = +3；預測激發度 0.579</span><span class="en">Injection strength α = +3; predicted arousal 0.579</span></p>
 </div>
 </div>
 </section>
